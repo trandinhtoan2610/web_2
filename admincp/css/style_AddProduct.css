@@ -243,8 +243,17 @@ textarea{
 	margin-right: 4px;
 	cursor: pointer;
 }
-
-.buttons a:hover{
+#themsanpham:hover{
 	border: 1px solid red;
 	color: red;
+}
+#themsanpham{
+	color: black;
+	border: 1px solid black;
+	width: 150px;
+	padding: 5px 10px;
+	border-radius: 4px;
+	text-decoration: none;
+	margin-right: 4px;
+	cursor: pointer
 }

@@ -10,9 +10,8 @@ $sql_sanpham = mysqli_query($conn, 'SELECT * FROM sanpham ORDER BY masp ASC');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/1acf2d22a5.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/style_ProductAdmin.css">
-    <link rel="stylesheet" href="../css/style_AddProduct.css">
-    
+    <link rel="stylesheet" href="css/style_AddProduct.css">
+    <link rel="stylesheet" href="css/style_ProductAdmin.css">
     <title>Sản phẩm</title>
 </head>
 
@@ -26,7 +25,6 @@ $sql_sanpham = mysqli_query($conn, 'SELECT * FROM sanpham ORDER BY masp ASC');
         include("../admincp/modules/main.php");
         ?>
     </main>
-
 </body>
 <script>
     // js cua phan aside menu

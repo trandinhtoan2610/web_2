@@ -1,6 +1,6 @@
-       <main>
+		<main>
 			<section id="main"> 
-                    <form action="#" id="formId">
+                    <form>
 						<div class="change_img">
 							<img src="../../img/pic.png" alt="laptop" id="product_pic">
 							<label for="input_file" class="change_button">Thêm</label>
@@ -30,8 +30,7 @@
 							<textarea name="textarea_field"></textarea>
 						</div>
 						<div class="buttons">
-							<a href="index.php"><i class="fa-solid fa-x"></i>Đóng</a>
-							<a onclick="warning()" class="save" id="saveButton"><i class="fa-solid fa-plus"></i>Thêm</a>
+							<input type="submit" name="themsanpham" id="themsanpham" value="Thêm sản phẩm" >
 						</div>
                     </form>
             </section>    

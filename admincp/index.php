@@ -1,6 +1,11 @@
 <?php
 include('../admincp/config/config.php');
-$sql_sanpham = mysqli_query($conn, 'SELECT * FROM sanpham ORDER BY masp ASC');
+
+
+$sql_sanpham = mysqli_query($conn, 'SELECT * FROM sanpham ORDER BY thutu ASC');
+
+
+
 ?>
 <!DOCTYPE html>
 <html>

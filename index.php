@@ -12,10 +12,5 @@
 		<?php include("pages/header.php")?>
 		<?php include("pages/main.php")?>	
 		<?php include("pages/footer.php")?>
-        <script>
-            function remind(){
-                alert('Bạn chưa đăng nhập !!!');
-            }
-        </script>
 	</body>
 </html>

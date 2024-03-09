@@ -1,7 +1,4 @@
-<?php
-include('../admincp/config/config.php');
-$sql_sanpham = mysqli_query($conn, 'SELECT * FROM sanpham ORDER BY masp ASC');
-?>
+
 <!DOCTYPE html>
 <html>
 

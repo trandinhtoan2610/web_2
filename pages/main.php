@@ -12,9 +12,6 @@
 		else if($tam=='history'){
 			include('main/history.php');
 		}
-		else if($tam=='login'){
-			include('main/login.php');
-		}
 		else include('main/index.php');
 		
 	?>

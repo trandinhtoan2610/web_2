@@ -50,7 +50,6 @@
     <!--đổi title khi nhấn registerLink-->
     <title class="title">Đăng nhập</title>
     <link rel="stylesheet" href="./css/style_Reglog.css">
-    
 </head>
 <body>
     <img src="./img/thegioididong.png" alt="thegioididong">
@@ -81,7 +80,7 @@
                 <span id="confirmMessage"></span><br/>
                 <span id="username_feedback"></span><br/>
                 <label><input type="checkbox">Tôi đồng ý với các <a href="#"></a>Điều khoản dịch vụ</a> & <a href="#">Chính sách bảo mật</a></label>
-                <button id="btn-register" type="submit" name="dangky" >ĐĂNG KÝ</button>
+                <button id="btn-register" type="submit" name="dangky" disabled>ĐĂNG KÝ</button>
                 <p>Bạn đã có tài khoản? <a href="#" class="login-link">Đăng nhập</a></p>
             </form>
         </div>
@@ -115,9 +114,9 @@
                 message.style.color = "red";
                 btn_register.disabled = true;
             }
-            if(document.getElementById("txtUser").value == "" && txtHint.innerText.trim() == ""){
+            if(document.getElementById("txtUser").value == "" || txtHint.innerHTML.trim() !== ""){
                 btn_register.disabled = true;
-            } 
+            }  
         }
 
         function showHint(str) {
@@ -125,13 +124,15 @@
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                 txtHint.innerHTML = this.responseText;
+                if(document.getElementById("txtUser").value !== "" && document.getElementById("password").value !== "" && document.getElementById("confirm_password").value !== "" ){
+                if( txtHint.innerHTML.trim() === "" && document.getElementById("password").value === document.getElementById("confirm_password").value){
+                    btn_register.disabled = false;
+                }else btn_register.disabled = true;
+            } else btn_register.disabled = true;
                 }
             };
-            xmlhttp.open("GET", "gethint.php?q=" + str, true);
+            xmlhttp.open("GET", "register.php?q=" + str, true);
             xmlhttp.send();
-            if(document.getElementById("txtUser").value != "" && txtHint.innerText.trim() == "" && document.getElementById("password").value == document.getElementById("confirm_password").value){
-                btn_register.disabled = false;
-            } else btn_register.disabled = true;
         }
     </script>
 </body>

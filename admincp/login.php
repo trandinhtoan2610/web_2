@@ -31,11 +31,13 @@ if((isset($_POST['dangnhap']))){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/style_Reglog.css">
+    <title>Login</title>
 </head>
 <body>
+    <div class="wrapper">
     <div class=" form-box login">
-            <h1>Đăng nhập</h1>
+            <h1 style="color: red">Đăng nhập ADMIN</h1>
             <form action="login.php" method="post">
                 <input type="text" name="user" placeholder="Tên đăng nhập" > 
                 <input type="password" name="pass" placeholder="Mật khẩu" >
@@ -49,5 +51,7 @@ if((isset($_POST['dangnhap']))){
             <a href="#" class="register-link">Đăng ký</a>
         </form>
     </div>
+    </div>
+    
 </body>
 </html>

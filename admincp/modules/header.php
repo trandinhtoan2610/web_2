@@ -3,7 +3,7 @@
         <ul class="navbar-list">
             <!--link hompage-->
             <li class="left">
-                <a href="productAdmin.html">
+                <a href="../admincp/index.php?action=quanlysanpham&query=lietke">
                     <img src="../img/thegioididong.png">
                 </a>
             </li>

@@ -23,8 +23,8 @@
 						</div>
 
 						<div class="edit">
-							<label for="tensanpham">Tên</label>
-							<input type="text" name="tensanpham" >
+							<label for="product_name">Tên</label>
+							<input type="text" name="product_name" >
 						</div> 
 						<div class="edit">
 							<label for="product_price">Giá</label>

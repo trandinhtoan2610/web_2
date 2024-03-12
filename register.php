@@ -1,10 +1,7 @@
 <?php
 include "./admincp/config/config.php";
 $q = $_REQUEST["q"];
-
 $hint = "";
-
-// lookup all hints from array if $q is different from ""
 if ($q !== "") {
         $stmt = $conn->prepare("SELECT * FROM user WHERE username = ?");
         $stmt->bind_param("s", $q);
@@ -15,7 +12,5 @@ if ($q !== "") {
         }
         $stmt->close();
 }
-
-// Output "no suggestion" if no hint was found or output correct values
 echo $hint;
 ?>

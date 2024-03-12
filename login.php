@@ -15,11 +15,7 @@
                 session_start();
                 $_SESSION['username'] = $row['username'];
                 header("Location: index.php");
-            } else if($password == $row['password'] && $row['type'] == 0) {
-                session_start();
-                $_SESSION['username'] = $row['username'];
-                header("Location: admincp/index.php");
-            } else{
+            }  else{
                 $error_msg = "Mật khẩu không chính xác";
             }
         } else {

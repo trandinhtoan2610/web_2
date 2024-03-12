@@ -15,21 +15,37 @@
                             
                         </li>
                         <li>
-                            <a href="index.php?quanly=giohang">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            Giỏ hàng 
-                            </a>
+                            <?php
+                            session_start();
+                            // Kiểm tra xem người dùng đã đăng nhập hay chưa
+                            if (!isset($_SESSION['username'])) {
+                                // Người dùng chưa đăng nhập, hiển thị nút thông báo hoặc thông báo khác
+                                echo '<a onclick="alert(\'Vui lòng đăng nhập\')"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng</a>';
+                            } else {
+                                echo '<a href="index.php?quanly=giohang"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng</a>';
+                            }
+                            ?>
                         </li>
                         <li>
-                            <a href="index.php?quanly=history">
-                            <i class="fa-solid fa-clock-rotate-left"></i>
-                            Lịch sử mua hàng
-                            </a>
+                            <?php
+                            // Kiểm tra xem người dùng đã đăng nhập hay chưa
+                            if (!isset($_SESSION['username'])) {
+                                // Người dùng chưa đăng nhập, hiển thị nút thông báo hoặc thông báo khác
+                                echo '<a onclick="alert(\'Vui lòng đăng nhập\')">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                Lịch sử mua hàng
+                                </a>';
+                            } else {
+                                echo '<a href="index.php?quanly=history">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                Lịch sử mua hàng
+                                </a>';
+                            }
+                            ?>        
+                            
                         </li>
                         <li>
                         <?php
-                        // Bắt đầu phiên
-                        session_start();
                         // Kiểm tra xem người dùng đã đăng nhập hay chưa
                         if (isset($_SESSION['username'])) {
                             $username = $_SESSION['username'];

@@ -1,11 +1,5 @@
 <?php
 include('../admincp/config/config.php');
-
-
-$sql_sanpham = mysqli_query($conn, 'SELECT * FROM sanpham ORDER BY thutu ASC');
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,7 +24,7 @@ $sql_sanpham = mysqli_query($conn, 'SELECT * FROM sanpham ORDER BY thutu ASC');
         include("../admincp/modules/main.php");
         ?>
     </main>
-</body>
+</body> 
 <script>
     // js cua phan aside menu
     function w3_open() {

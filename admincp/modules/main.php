@@ -15,7 +15,7 @@
                     include("../admincp/modules/quanlysanpham/lietke.php");
                     break;
                 case 'them':
-                    include("../admincp/modules/quanlysanpham/themsanpham.php");
+                    include("../admincp/modules/quanlysanpham/them.php");
                     break;
                 case 'sua':
                     include("../admincp/modules/quanlysanpham/sua.php");
@@ -25,25 +25,25 @@
                     break;
             }
             break;
-        case 'quanlyhangsanxuat':
-            switch ($query) {
-                case 'lietke':
-                    include("../admincp/modules/quanlyhangsanxuat/lietke.php");
-                    break;
-                case 'them':
-                    include("../admincp/modules/quanlyhangsanxuat/themsanpham.php");
-                    break;
-                case 'sua':
-                    include("../admincp/modules/quanlyhangsanxuat/sua.php");
-                    break;
-                default:
-                    include("../admincp/modules/quanlyhangsanxuat/chaomung.php");
-                    break;
-            }
-            break;
+        // case 'quanlyhangsanxuat':
+        //     switch ($query) {
+        //         case 'lietke':
+        //             include("../admincp/modules/quanlyhangsanxuat/lietke.php");
+        //             break;
+        //         case 'them':
+        //             include("../admincp/modules/quanlyhangsanxuat/themsanpham.php");
+        //             break;
+        //         case 'sua':
+        //             include("../admincp/modules/quanlyhangsanxuat/sua.php");
+        //             break;
+        //         default:
+        //             include("../admincp/modules/quanlyhangsanxuat/chaomung.php");
+        //             break;
+        //     }
+            // break;
 
         default:
-            include("../admincp/modules/quanlyhangsanxuat/chaomung.php");
+            include("../admincp/modules/chaomung.php");
             break;
     }
     ?>

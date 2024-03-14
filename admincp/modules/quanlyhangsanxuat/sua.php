@@ -1,5 +1,6 @@
 <?php
-    $sql_sua_sanpham = mysqli_query($conn,"SELECT * FROM sanpham where masp=$_GET[masanpham] LIMIT 1");
+	$masanpham = $_GET['masanpham'];
+    $sql_sua_sanpham = mysqli_query($conn,"SELECT * FROM sanpham where masp='$masanpham' LIMIT 1");
 ?>
 <h1>Sửa danh mục</h1>
 <main>
@@ -31,7 +32,7 @@
 
 						<div class="edit">
 							<label for="product_name">Tên</label>
-							<input type="text" name="product_name" value = "<?php echo $row['tensp']?>">
+							<input type="text" name="tensp" value = "<?php echo $row['tensp']?>">
 						</div> 
 						<div class="edit">
 							<label for="product_price">Giá</label>

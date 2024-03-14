@@ -25,22 +25,22 @@
                     break;
             }
             break;
-        // case 'quanlyhangsanxuat':
-        //     switch ($query) {
-        //         case 'lietke':
-        //             include("../admincp/modules/quanlyhangsanxuat/lietke.php");
-        //             break;
-        //         case 'them':
-        //             include("../admincp/modules/quanlyhangsanxuat/themsanpham.php");
-        //             break;
-        //         case 'sua':
-        //             include("../admincp/modules/quanlyhangsanxuat/sua.php");
-        //             break;
-        //         default:
-        //             include("../admincp/modules/quanlyhangsanxuat/chaomung.php");
-        //             break;
-        //     }
-            // break;
+        case 'quanlyhangsanxuat':
+            switch ($query) {
+                case 'lietke':
+                    include("../admincp/modules/quanlyhangsanxuat/lietke.php");
+                    break;
+                case 'them':
+                    include("../admincp/modules/quanlyhangsanxuat/them.php");
+                    break;
+                case 'sua':
+                    include("../admincp/modules/quanlyhangsanxuat/sua.php");
+                    break;
+                default:
+                    include("../admincp/modules/quanlyhangsanxuat/chaomung.php");
+                    break;
+            }
+            break;
 
         default:
             include("../admincp/modules/chaomung.php");

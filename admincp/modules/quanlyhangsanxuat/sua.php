@@ -1,13 +1,13 @@
 <?php
-$sql_sua_loaisanpham = mysqli_query($conn, "SELECT * FROM loaisanpham where id_loaisanpham='$_GET[idloai]' LIMIT 1");
+$sql_sua_hangsanxuat = mysqli_query($conn, "SELECT * FROM hangsanxuat where id_hangsanxuat='$_GET[idhang]' LIMIT 1");
 ?>
-<h1>Sửa danh mục</h1>
+<h1>Sửa thông tin hãng sản xuất</h1>
 <main>
 	<section id="main">
-		<form method="POST" action="modules/quanlyhangsanxuat/xuly.php?idloai=<?php echo $_GET['idloai'] ?>"
+		<form method="POST" action="modules/quanlyhangsanxuat/xuly.php?idhang=<?php echo $_GET['idhang'] ?>"
 			enctype="multipart/form-data">
 			<?php
-			while ($row = mysqli_fetch_array($sql_sua_loaisanpham)) {
+			while ($row = mysqli_fetch_array($sql_sua_hangsanxuat)) {
 				?>
 				<div class="edit">
 					<label for="hinhAnh">Hình Ảnh</label>
@@ -16,8 +16,8 @@ $sql_sua_loaisanpham = mysqli_query($conn, "SELECT * FROM loaisanpham where id_l
 				</div>
 
 				<div class="edit">
-					<label for="tenloai">Tên</label>
-					<input type="text" name="tenloai" value="<?php echo $row['tenloai'] ?>">
+					<label for="tenhang">Tên hãng sản xuất</label>
+					<input type="text" name="tenhang" value="<?php echo $row['tenhang'] ?>">
 				</div>
 
 				<div class="edit">
@@ -26,7 +26,7 @@ $sql_sua_loaisanpham = mysqli_query($conn, "SELECT * FROM loaisanpham where id_l
 				</div>
 
 				<div class="buttons">
-					<input type="submit" name="sualoaisanpham" id="sualoaisanpham" value="Sửa loại sản phẩm">
+					<input type="submit" name="suahangsanxuat" id="suahangsanxuat" value="Sửa hãng sản xuất">
 				</div>
 
 				<?php

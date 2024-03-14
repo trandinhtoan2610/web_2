@@ -11,26 +11,26 @@ $sql_sua_sanpham = mysqli_query($conn, "SELECT * FROM sanpham where masp='$_GET[
 				?>
 				<div class="edit">
 					<label for="hinhAnh">Hình Ảnh</label>
-					<img src="../img/<?php echo $row['hinhAnh'] ?>">
+					<img style="width: 10%;" src="../img/<?php echo $row['hinhAnh'] ?>">
 					<input type="file" name="hinhAnh" class="hinhanh">
 				</div>
 
 				<div class="edit">
-					<label for="id_loaisanpham">Loại</label>
-					<select name="id_loaisanpham" id="id_loaisanpham">
+					<label for="id_hangsanxuat">Hãng sản xuất</label>
+					<select name="id_hangsanxuat" id="id_hangsanxuat">
 						<?php
-						$sql_loai = mysqli_query($conn, 'SELECT * FROM loaisanpham ORDER BY id_loaisanpham DESC');
-						while ($row_loai = mysqli_fetch_array($sql_loai)) {
-							if ($row_loai['id_loaisanpham'] == $row['id_loaisanpham']) {
+						$sql_hangsanxuat = mysqli_query($conn, 'SELECT * FROM hangsanxuat ORDER BY id_hangsanxuat DESC');
+						while ($row_hangsanxuat = mysqli_fetch_array($sql_hangsanxuat)) {
+							if ($row_hangsanxuat['id_hangsanxuat'] == $row['id_hangsanxuat']) {
 								?>
-								<option selected value="<?php echo $row_loai['id_loaisanpham'] ?>">
-									<?php echo $row_loai['tenloai'] ?>
+								<option selected value="<?php echo $row_hangsanxuat['id_hangsanxuat'] ?>">
+									<?php echo $row_hangsanxuat['tenhang'] ?>
 								</option>
 								<?php
 							} else {
 								?>
-								<option value="<?php echo $row_loai['id_loaisanpham'] ?>">
-									<?php echo $row_loai['tenloai'] ?>
+								<option value="<?php echo $row_hangsanxuat['id_hangsanxuat'] ?>">
+									<?php echo $row_hangsanxuat['tenhang'] ?>
 								</option>
 								<?php
 							}
@@ -47,7 +47,7 @@ $sql_sua_sanpham = mysqli_query($conn, "SELECT * FROM sanpham where masp='$_GET[
 
 
 				<div class="edit">
-					<label for="product_name">Tên</label>
+					<label for="tensp">Tên sản phẩm</label>
 					<input type="text" name="tensp" value="<?php echo $row['tensp'] ?>">
 				</div>
 				<div class="edit">
@@ -79,8 +79,8 @@ $sql_sua_sanpham = mysqli_query($conn, "SELECT * FROM sanpham where masp='$_GET[
 
 				</div>
 				<div class="edit">
-					<label for="product_quantity">Mô tả</label>
-					<textarea name="textarea_field"></textarea>
+					<label for="moTa">Mô tả</label>
+					<textarea name="moTa"></textarea>
 				</div>
 				<div class="buttons">
 					<input type="submit" name="suasanpham" id="suasanpham" value="Sửa sản phẩm">

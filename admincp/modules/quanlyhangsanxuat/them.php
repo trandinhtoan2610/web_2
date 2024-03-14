@@ -12,14 +12,12 @@
 			</div>
 
 			<div class="edit">
-				<label for="tenloai">Tên loại</label>	
-				<input type="text" name="tenloai">
+				<label for="tenhang">Tên hãng sản xuất</label>	
+				<input type="text" name="tenhang">
 			</div>
 
-			
-
 			<div class="buttons">
-				<input type="submit" name="themloaisanpham" id="themloaisanpham" value="Thêm hãng sản xuất">
+				<input type="submit" name="themhangsanxuat" id="themhangsanxuat" value="Thêm hãng sản xuất">
 			</div>
 		</form>
 	</section>

@@ -1,5 +1,5 @@
 <?php
-$sql_lietke_loaisanpham = mysqli_query($conn, 'SELECT * FROM loaisanpham ORDER BY loaisanpham.thutu ASC');
+$sql_lietke_hangsanxuat = mysqli_query($conn, 'SELECT * FROM hangsanxuat ORDER BY hangsanxuat.thutu ASC');
 ?>
 
 <h1>Trang hãng sản xuất </h1>
@@ -9,13 +9,13 @@ $sql_lietke_loaisanpham = mysqli_query($conn, 'SELECT * FROM loaisanpham ORDER B
     <!--noi dung tieu de-->
     <?php
     $i = 0;
-    while ($row_loaisanpham = mysqli_fetch_array($sql_lietke_loaisanpham)) {
+    while ($row_hangsanxuat = mysqli_fetch_array($sql_lietke_hangsanxuat)) {
         $i++;
         ?>
         <tr class="title">
             <th>Thứ tự</th>
             <th>Hình ảnh</th>
-            <th>Tên loại</th>
+            <th>Tên hãng sản xuất</th>
             <th>Thao tác</th>
         </tr>
 
@@ -25,23 +25,23 @@ $sql_lietke_loaisanpham = mysqli_query($conn, 'SELECT * FROM loaisanpham ORDER B
                 <?php echo $i?>
             </td>
             
-            <td><a href="?action=quanlyhangsanxuat&query=sua&idloai=<?php echo $row_loaisanpham['id_loaisanpham'] ?>">
-                    <img src="../img/<?php echo $row_loaisanpham['hinhAnh'] ?>"></a></td>
+            <td><a href="?action=quanlyhangsanxuat&query=sua&idhang=<?php echo $row_hangsanxuat['id_hangsanxuat'] ?>">
+                    <img src="../img/<?php echo $row_hangsanxuat['hinhAnh'] ?>"></a></td>
             
-                    <td>
-                <?php echo $row_loaisanpham['tenloai'] ?>
+            <td>
+                <?php echo $row_hangsanxuat['tenhang'] ?>
             </td>
  
             <td>
 
-                <a href="?action=quanlyhangsanxuat&query=sua&idloai=<?php echo $row_loaisanpham['id_loaisanpham'] ?>"
+                <a href="?action=quanlyhangsanxuat&query=sua&idhang=<?php echo $row_hangsanxuat['id_hangsanxuat'] ?>"
                     class="action-button">
                     <i class="fas fa-edit"></i>
                     <div class="action-tooltip">Chỉnh sửa</div>
                 </a>
 
 
-                <a href="modules/quanlyhangsanxuat/xuly.php?idloai=<?php echo $row_loaisanpham['id_loaisanpham'] ?>" class="action-button"
+                <a href="modules/quanlyhangsanxuat/xuly.php?idhang=<?php echo $row_hangsanxuat['id_hangsanxuat'] ?>" class="action-button"
                     onclick="warning(this)">
                     <i class="fas fa-trash-alt"></i>
                     <div class="action-tooltip">Xóa</div>

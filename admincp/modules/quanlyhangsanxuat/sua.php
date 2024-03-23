@@ -26,7 +26,14 @@ $sql_sua_hangsanxuat = mysqli_query($conn, "SELECT * FROM hangsanxuat where id_h
 				</div>
 
 				<div class="buttons">
-					<input type="submit" name="suahangsanxuat" id="suahangsanxuat" value="Sửa hãng sản xuất">
+					<input type="submit" name="suahangsanxuat" id="suahangsanxuat" value="Sửa hãng sản xuất" style="color: black;
+									border: 1px solid black;
+									width: 150px;
+									padding: 5px 10px;
+									border-radius: 4px;
+									text-decoration: none;
+									margin-right: 4px;
+									cursor: pointer">
 				</div>
 
 				<?php

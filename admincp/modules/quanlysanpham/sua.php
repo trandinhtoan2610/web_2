@@ -12,7 +12,7 @@ $sql_sua_sanpham = mysqli_query($conn, "SELECT * FROM sanpham where masp='$_GET[
 				<div class="edit">
 					<label for="hinhAnh">Hình Ảnh</label>
 					<img style="width: 10%;" src="../img/<?php echo $row['hinhAnh'] ?>">
-					<input type="file" name="hinhAnh" class="hinhanh">
+					<input type="file" name="hinhAnh" class="hinhanh" style="cursor: pointer;">
 				</div>
 
 				<div class="edit">
@@ -83,7 +83,14 @@ $sql_sua_sanpham = mysqli_query($conn, "SELECT * FROM sanpham where masp='$_GET[
 					<textarea name="moTa"></textarea>
 				</div>
 				<div class="buttons">
-					<input type="submit" name="suasanpham" id="suasanpham" value="Sửa sản phẩm">
+					<input type="submit" name="suasanpham" id="suasanpham" value="Sửa sản phẩm " style="color: black;
+								border: 1px solid black;
+								width: 150px;
+								padding: 5px 10px;
+								border-radius: 4px;
+								text-decoration: none;
+								margin-right: 4px;
+								cursor: pointer">
 				</div>
 
 				<?php

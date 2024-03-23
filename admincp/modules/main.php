@@ -9,6 +9,7 @@
     }
 
     switch ($tam) {
+        
         case 'quanlysanpham':
             switch ($query) {
                 case 'lietke':
@@ -42,10 +43,24 @@
             }
             break;
 
+        case 'quanlydonhang':
+            switch ($query) {
+                case 'lietke':
+                    include("../admincp/modules/quanlydonhang/lietke.php");
+                    break;
+                case 'xemdonhang':
+                    include("../admincp/modules/quanlydonhang/xemdonhang.php");
+                    break;
+                default:
+                    include("../admincp/modules/quanlydonhang/chaomung.php");
+                    break;
+            }
+            break;
         default:
             include("../admincp/modules/chaomung.php");
             break;
     }
+
     ?>
 
 

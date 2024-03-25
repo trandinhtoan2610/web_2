@@ -6,13 +6,13 @@ $sql_lietke_bill = mysqli_query($conn, 'SELECT * FROM bill,user WHERE bill.id_us
 <table>
     <!--noi dung tieu de-->
     <?php
-    $i = 0;
+    // $i = 0;
     while ($row_bill = mysqli_fetch_array($sql_lietke_bill)) {
-        if ( $row_bill['type'] == 1){
-        $i++;
+        
+        // $i++;
         ?>
         <tr class="title">
-            <th>Thứ tự</th>
+            <!-- <th>Thứ tự</th> -->
             <th>Mã đơn hàng</th>
             <th>Username</th>
             <th>Địa chỉ</th>
@@ -25,12 +25,12 @@ $sql_lietke_bill = mysqli_query($conn, 'SELECT * FROM bill,user WHERE bill.id_us
 
         <!--noi dung cac san pham-->
         <tr class="product">
-            <td>
-                <?php echo $i?>
-            </td>
+            <!-- <td>
+                
+            </td> -->
             
             <td>
-                <?php echo $row_bill['code_bill']?>
+                <?php echo $row_bill['id_bill']?>
             </td>
             
             <td>
@@ -52,7 +52,7 @@ $sql_lietke_bill = mysqli_query($conn, 'SELECT * FROM bill,user WHERE bill.id_us
             <td>
                 <?php
                 if ($row_bill['bill_status'] ==1){
-                    echo '<a href="modules/quanlydonhang/xuly.php?code='.$row_bill['code_bill'].'">Đơn hàng mới</a>';
+                    echo '<a href="modules/quanlydonhang/xuly.php?idbill='.$row_bill['id_bill'].'">Đơn hàng mới</a>';
                 } else {
                     echo '<a href="">Đã duyệt đơn hàng</a>';
                 }
@@ -60,13 +60,11 @@ $sql_lietke_bill = mysqli_query($conn, 'SELECT * FROM bill,user WHERE bill.id_us
             </td>
 
             <td>
-                <a href="index.php?action=quanlydonhang&query=xemdonhang&code=<?php echo $row_bill['code_bill']?>">Xem đơn hàng</a>
+                <a href="index.php?action=quanlydonhang&query=xemdonhang&idbill=<?php echo $row_bill['id_bill']?>">Xem đơn hàng</a>
             </td>
         </tr>
         <?php
-    } else { 
-        echo 'Không có đơn hàng';
-    }
+    
     }
     ?>
 </table>

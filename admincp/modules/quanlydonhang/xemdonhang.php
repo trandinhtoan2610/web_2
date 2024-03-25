@@ -1,7 +1,7 @@
 <?php
-$code = $_GET['code'];
+$idbill = $_GET['idbill'];
 $sql_lietke_billdetail = mysqli_query($conn, "SELECT * FROM bill_detail,sanpham WHERE bill_detail.masp =sanpham.masp 
-and bill_detail.code_bill ='$code' ORDER BY bill_detail.id_billdetail ASC");
+and bill_detail.id_bill ='$idbill' ORDER BY bill_detail.id_billdetail ASC");
 ?>
 
 <!--product list-->
@@ -9,7 +9,6 @@ and bill_detail.code_bill ='$code' ORDER BY bill_detail.id_billdetail ASC");
     <!--noi dung tieu de-->
     <tr class="title">
         <th>Thứ tự</th>
-        <th>Mã đơn hàng</th>
         <th>Tên sản phẩm</th>
         <th>Số lượng</th>
         <th>Đơn giá</th>
@@ -30,10 +29,6 @@ and bill_detail.code_bill ='$code' ORDER BY bill_detail.id_billdetail ASC");
         <tr class="product">
             <td>
                 <?php echo $i?>
-            </td>
-            
-            <td>
-                <?php echo $row_bill['code_bill']?>
             </td>
             
             <td>

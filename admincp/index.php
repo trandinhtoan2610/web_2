@@ -1,4 +1,5 @@
 <?php
+include("../admincp/config/config.php");
 session_start();
 if (!isset($_SESSION['username']) || !isset($_SESSION['type'])) {
     header("Location: login.php");
@@ -30,7 +31,7 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['type'])) {
         include("../admincp/modules/main.php");
         ?>
     </main>
-</body>
+</body> 
 <script>
     // js cua phan aside menu
     function w3_open() {

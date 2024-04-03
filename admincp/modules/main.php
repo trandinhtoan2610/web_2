@@ -9,13 +9,14 @@
     }
 
     switch ($tam) {
+        
         case 'quanlysanpham':
             switch ($query) {
                 case 'lietke':
                     include("../admincp/modules/quanlysanpham/lietke.php");
                     break;
                 case 'them':
-                    include("../admincp/modules/quanlysanpham/themsanpham.php");
+                    include("../admincp/modules/quanlysanpham/them.php");
                     break;
                 case 'sua':
                     include("../admincp/modules/quanlysanpham/sua.php");
@@ -31,7 +32,7 @@
                     include("../admincp/modules/quanlyhangsanxuat/lietke.php");
                     break;
                 case 'them':
-                    include("../admincp/modules/quanlyhangsanxuat/themsanpham.php");
+                    include("../admincp/modules/quanlyhangsanxuat/them.php");
                     break;
                 case 'sua':
                     include("../admincp/modules/quanlyhangsanxuat/sua.php");
@@ -42,10 +43,24 @@
             }
             break;
 
+        case 'quanlydonhang':
+            switch ($query) {
+                case 'lietke':
+                    include("../admincp/modules/quanlydonhang/lietke.php");
+                    break;
+                case 'xemdonhang':
+                    include("../admincp/modules/quanlydonhang/xemdonhang.php");
+                    break;
+                default:
+                    include("../admincp/modules/quanlydonhang/chaomung.php");
+                    break;
+            }
+            break;
         default:
-            include("../admincp/modules/quanlyhangsanxuat/chaomung.php");
+            include("../admincp/modules/chaomung.php");
             break;
     }
+
     ?>
 
 

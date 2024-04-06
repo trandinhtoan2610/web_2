@@ -1,5 +1,5 @@
 <?php
-$sql_lietke = mysqli_query($conn, 'SELECT * FROM sanpham ORDER BY sanpham.thutu ASC');
+$sql_lietke = mysqli_query($conn, 'SELECT * FROM sanpham WHERE tinhtrang = 1 or tinhtrang = 0 ORDER BY sanpham.thutu ASC ');
 ?>
 
 <h1>Trang sản phẩm</h1>
@@ -42,7 +42,7 @@ $sql_lietke = mysqli_query($conn, 'SELECT * FROM sanpham ORDER BY sanpham.thutu 
             <td>
                 <?php
                 if ($row_sanpham['tinhtrang'] == 1) {
-                    echo 'Kích hoạt';
+                    echo 'Hiện';
                 } else{
                     echo 'Ẩn';
                 }

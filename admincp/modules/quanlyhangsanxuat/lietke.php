@@ -1,5 +1,5 @@
 <?php
-$sql_lietke_hangsanxuat = mysqli_query($conn, 'SELECT * FROM hangsanxuat ORDER BY hangsanxuat.thutu ASC');
+$sql_lietke_hangsanxuat = mysqli_query($conn, 'SELECT * FROM hangsanxuat WHERE tinhtrang = 0 or tinhtrang = 1 ORDER BY hangsanxuat.thutu ASC');
 ?>
 
 <h1>Trang hãng sản xuất </h1>

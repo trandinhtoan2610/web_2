@@ -4,6 +4,9 @@ $sql_lietke_billdetail = mysqli_query($conn, "SELECT * FROM bill_detail,sanpham 
 and bill_detail.id_bill ='$idbill' ORDER BY bill_detail.id_billdetail ASC");
 ?>
 
+
+
+
 <!--product list-->
 <table>
     <!--noi dung tieu de-->

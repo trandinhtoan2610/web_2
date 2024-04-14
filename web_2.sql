@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2024 at 04:14 PM
+-- Generation Time: Apr 14, 2024 at 02:37 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -30,15 +30,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `bill` (
   `id_bill` int(11) NOT NULL,
   `bill_status` int(1) NOT NULL DEFAULT 1,
-  `id_user` int(11) NOT NULL
+  `id_user` int(11) NOT NULL,
+  `thoigian` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bill`
 --
 
-INSERT INTO `bill` (`id_bill`, `bill_status`, `id_user`) VALUES
-(1, 1, 1);
+INSERT INTO `bill` (`id_bill`, `bill_status`, `id_user`, `thoigian`) VALUES
+(5, 0, 3, '2024-04-14 19:24:38');
 
 -- --------------------------------------------------------
 
@@ -47,19 +48,18 @@ INSERT INTO `bill` (`id_bill`, `bill_status`, `id_user`) VALUES
 --
 
 CREATE TABLE `bill_detail` (
-  `id_billdetail` int(11) NOT NULL,
-  `soluongmua` int(100) NOT NULL,
+  `id_bill` int(11) NOT NULL,
   `masp` int(11) NOT NULL,
-  `id_bill` int(100) NOT NULL
+  `soluongmua` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bill_detail`
 --
 
-INSERT INTO `bill_detail` (`id_billdetail`, `soluongmua`, `masp`, `id_bill`) VALUES
-(1, 2, 1, 1),
-(2, 4, 2, 1);
+INSERT INTO `bill_detail` (`id_bill`, `masp`, `soluongmua`) VALUES
+(5, 1, 2),
+(5, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -71,19 +71,19 @@ CREATE TABLE `hangsanxuat` (
   `id_hangsanxuat` int(11) NOT NULL,
   `thutu` int(11) NOT NULL,
   `tenhang` varchar(100) NOT NULL,
-  `hinhAnh` varchar(100) NOT NULL
+  `hinhAnh` varchar(100) NOT NULL,
+  `tinhtrang` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `hangsanxuat`
 --
 
-INSERT INTO `hangsanxuat` (`id_hangsanxuat`, `thutu`, `tenhang`, `hinhAnh`) VALUES
-(1, 1, 'ACER', '1711348935_acer.png'),
-(2, 2, 'ASUS', '1711348987_asus.png'),
-(3, 3, 'DELL', '1711349000_dell.png'),
-(4, 4, 'LENOVO', '1711349013_lenovo.png'),
-(5, 5, 'MSI', '1711349027_msi.png');
+INSERT INTO `hangsanxuat` (`id_hangsanxuat`, `thutu`, `tenhang`, `hinhAnh`, `tinhtrang`) VALUES
+(1, 1, 'ACER', '1711348935_acer.png', 1),
+(2, 2, 'ASUS', '1711348987_asus.png', 1),
+(3, 3, 'DELL', '1711349000_dell.png', 1),
+(4, 4, 'LENOVO', '1711349013_lenovo.png', 1);
 
 -- --------------------------------------------------------
 
@@ -107,7 +107,7 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`masp`, `id_hangsanxuat`, `hinhAnh`, `thutu`, `tensp`, `giaGoc`, `soluong`, `tinhtrang`) VALUES
-(1, 4, '1711349162 lenovo-2.png', 1, 'LENOVO\r\n', 10000000, 12, 1),
+(1, 4, '1711349162 lenovo-2.png', 1, 'LENOVO', 10000000, 12, 1),
 (2, 2, '1711349268 lenovo-2.png', 2, 'ASUS', 12000000, 11, 1);
 
 -- --------------------------------------------------------
@@ -131,7 +131,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `diachi`, `email`, `dienthoai`, `type`) VALUES
-(1, 'phatle', '123', 'e4/5d', 'phat@gmail.com', '0338641606', 1);
+(1, 'phatle', '123123', 'e4/5d', 'phat@gmail.com', '0338641606', 0),
+(3, 'phat', '123', 'e3/4d', 'phat1@gmail.com', '0338641606', 1);
 
 --
 -- Indexes for dumped tables
@@ -148,9 +149,8 @@ ALTER TABLE `bill`
 -- Indexes for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
-  ADD PRIMARY KEY (`id_billdetail`),
-  ADD KEY `billdetail_bill` (`id_bill`),
-  ADD KEY `billdetail_sp` (`masp`);
+  ADD PRIMARY KEY (`id_bill`,`masp`) USING BTREE,
+  ADD KEY `FK_billdetail_sanpham` (`masp`);
 
 --
 -- Indexes for table `hangsanxuat`
@@ -179,13 +179,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
-  MODIFY `id_billdetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `hangsanxuat`
@@ -203,7 +203,7 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -219,8 +219,8 @@ ALTER TABLE `bill`
 -- Constraints for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
-  ADD CONSTRAINT `billdetail_bill` FOREIGN KEY (`id_bill`) REFERENCES `bill` (`id_bill`),
-  ADD CONSTRAINT `billdetail_sp` FOREIGN KEY (`masp`) REFERENCES `sanpham` (`masp`);
+  ADD CONSTRAINT `FK_billdetail_bill` FOREIGN KEY (`id_bill`) REFERENCES `bill` (`id_bill`),
+  ADD CONSTRAINT `FK_billdetail_sanpham` FOREIGN KEY (`masp`) REFERENCES `sanpham` (`masp`);
 
 --
 -- Constraints for table `sanpham`

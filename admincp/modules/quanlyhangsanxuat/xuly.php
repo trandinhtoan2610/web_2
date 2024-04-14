@@ -22,8 +22,8 @@ if (isset($_POST['themhangsanxuat'])) {
         move_uploaded_file($hinhAnh['tmp_name'], $uploadPath);
 
         // Thêm sản phẩm vào cơ sở dữ liệu
-        $sql_them = "INSERT INTO `hangsanxuat` (`tenhang`, `thutu`, `hinhAnh`) 
-                     VALUES ('$tenhang', '$thutu','$hinhAnhName')";
+        $sql_them = "INSERT INTO `hangsanxuat` (`tenhang`, `thutu`, `hinhAnh`,`tinhtrang`) 
+                     VALUES ('$tenhang', '$thutu','$hinhAnhName',1)";
         mysqli_query($conn, $sql_them);
 
         header("Location:../../index.php?action=quanlyhangsanxuat&query=lietke");
@@ -70,7 +70,9 @@ if (isset($_POST['themhangsanxuat'])) {
         unlink('../../../img/' . $oldImage);
         
         // Xóa hãng sản xuất
-        $sql_xoa = "DELETE FROM hangsanxuat WHERE id_hangsanxuat = '$idhang'";
+        $sql_xoa = "UPDATE  hangsanxuat SET tinhtrang = -1 WHERE id_hangsanxuat = '$idhang'";
+        
+        // $sql_xoa = "DELETE FROM hangsanxuat WHERE id_hangsanxuat = '$idhang'";
         mysqli_query($conn, $sql_xoa);
         
         header("Location:../../index.php?action=quanlyhangsanxuat&query=lietke");

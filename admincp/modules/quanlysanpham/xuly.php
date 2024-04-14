@@ -65,7 +65,9 @@ if (isset($_POST['themsanpham'])) {
     while ($row = mysqli_fetch_array($query)) {
         unlink('../../../img/' . $row['hinhAnh']);
     }
-    $sql_xoa = "DELETE FROM sanpham WHERE masp= '$masanpham' ";
+
+    $sql_xoa = "UPDATE `sanpham` set `tinhtrang` = -1 WHERE masp ='$masanpham'";
+    // $sql_xoa = "DELETE FROM sanpham WHERE masp= '$masanpham' ";
     mysqli_query($conn, $sql_xoa);
     header("Location:../../index.php?action=quanlysanpham&query=lietke");
 }

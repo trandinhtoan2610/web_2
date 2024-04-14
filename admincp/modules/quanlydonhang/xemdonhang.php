@@ -1,8 +1,13 @@
 <?php
 $idbill = $_GET['idbill'];
-$sql_lietke_billdetail = mysqli_query($conn, "SELECT * FROM bill_detail,sanpham WHERE bill_detail.masp =sanpham.masp 
-and bill_detail.id_bill ='$idbill' ORDER BY bill_detail.id_billdetail ASC");
+// $sql_lietke_billdetail = mysqli_query($conn, "SELECT * FROM bill_detail,sanpham WHERE bill_detail.masp =sanpham.masp 
+// and bill_detail.id_bill ='$idbill' ORDER BY bill_detail.id_billdetail ASC");
+$sql_lietke_billdetail = mysqli_query($conn,"SELECT * FROM bill_detail,sanpham WHERE bill_detail.id_bill = '$idbill' 
+AND bill_detail.masp = sanpham.masp" );
 ?>
+
+
+
 
 <!--product list-->
 <table>
@@ -32,7 +37,8 @@ and bill_detail.id_bill ='$idbill' ORDER BY bill_detail.id_billdetail ASC");
             </td>
             
             <td>
-                <?php echo $row_bill['tensp']?>
+                <a href="?action=quanlysanpham&query=sua&masanpham=<?php echo $row_bill['masp'] ?>" class="action-button"><?php echo $row_bill['tensp']?></a>
+                    
             </td>
 
             <td>

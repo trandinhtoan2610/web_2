@@ -4,7 +4,7 @@
     <main>
         <section>
             <h2>Tìm kiếm nâng cao</h2>
-            <form action="search1.php">
+            <form action="index.php?page=advSrch" method="post">
                     <div>
                         <label for="name">Tên sản phẩm</label>
                         <input type="text" id="name" required>
@@ -17,20 +17,12 @@
                         </select>
                     </div>
                     <div>
-                        <label for="purpose">Mục đích sử dụng</label>
-                        <select id="purpose">
-                            <option value="gaming">Gaming</option>
-                            <option value="hoctap-vanphong">Học tập - Văn phòng</option>
-                            <option value="dohoa-kythuat">Đồ họa - Kỹ thuật</option>
-                        </select>
-                    </div>
-                    <div>
                         <label for="priceFrom">Giá từ</label>
                         <input type="number" id="priceFrom">
                         <label for="priceFrom">đến khoảng</label>
                         <input type="number" id="priceTo">
                     </div>
-                <button>Tìm kiếm</button>
+                <button type="submit">Tìm kiếm</button>
             </form>
         </section>
     </main>

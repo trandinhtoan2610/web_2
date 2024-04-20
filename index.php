@@ -1,21 +1,37 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="https://kit.fontawesome.com/1acf2d22a5.js" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="./css/style_Mainpage.css"> <!-- css style - co the sua lai -->
-		<title>Thế giới di động</title>
-	</head>
-	<body>
-		<?php include("pages/header.php")?>
-		<?php include("pages/main.php")?>	
-		<?php include("pages/footer.php")?>
-        <script>
-            function remind(){
-                alert('Bạn chưa đăng nhập !!!');
-            }
-        </script>
-	</body>
-</html>
+<?php
+include 'lib/connect.php';
+include 'model/product.php';
+include 'model/category.php';
+session_start();
+if(isset($_GET['page'])&&($_GET['page']!=="")){
+    switch(trim($_GET['page'])){
+        case 'home':
+            require "controller/home.php";
+            break;
+        
+        case 'category':
+            require 'controller/category.php';
+            break;
+
+        case 'advSrch':
+            require 'controller/advSrch.php';
+            break;
+
+        case 'search':
+            require 'controller/search.php';
+            break;
+        
+        case 'productDetail':
+            require 'controller/productDetail.php';
+            break;
+            
+        default: 
+            require "controller/home.php";
+            break;
+    }
+}
+else{
+    require "controller/home.php";
+}
+
+?>

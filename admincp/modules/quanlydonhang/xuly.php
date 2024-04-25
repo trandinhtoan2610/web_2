@@ -7,12 +7,11 @@ if (isset($_GET['action']) && isset($_GET['idbill'])) {
     $action = $_GET['action'];
     $idbill = $_GET['idbill'];
 
-    // Kiểm tra action để xác định hành động cần thực hiện
+    
     if ($action == "duyet") {
-        // Nếu action là "duyet", cập nhật trạng thái của đơn hàng thành đã duyệt (0)
-        $sql = mysqli_query($conn, "UPDATE bill SET bill_status = 0 WHERE id_bill = '$idbill'");
+        
+        $sql = mysqli_query($conn, "UPDATE bill SET bill_status = 1 WHERE id_bill = '$idbill'");
     } elseif ($action == "huy") {
-        // Nếu action là "huy", cập nhật trạng thái của đơn hàng thành đã hủy (-1)
         $sql = mysqli_query($conn, "UPDATE bill SET bill_status = -1 WHERE id_bill = '$idbill'");
     }
 

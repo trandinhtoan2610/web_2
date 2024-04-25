@@ -108,7 +108,7 @@ if (isset($_POST['locDonHang'])) {
             <th>Quản lý</th>
 
         </tr>
-
+        
         <!--noi dung cac san pham-->
         <tr class="product">
             <!-- <td>
@@ -139,17 +139,15 @@ if (isset($_POST['locDonHang'])) {
 
             <td>
                 <?php
-                if ($row_bill['bill_status'] == 1) {
-                    echo '<a href="modules/quanlydonhang/xuly.php?action=duyet&idbill=' . $row_bill['id_bill'] . '">Đơn hàng mới | </a>';
+                if ($row_bill['bill_status'] == 0) {
+                    echo '<a href="modules/quanlydonhang/xuly.php?action=duyet&idbill=' . $row_bill['id_bill'] . '">Xác nhận | </a>';
                     echo '<a href="modules/quanlydonhang/xuly.php?action=huy&idbill=' . $row_bill['id_bill'] . '">Hủy đơn hàng</a>';
-
-                } 
-                else if ( $row_bill['bill_status'] == -1) {
+                } else if ($row_bill['bill_status'] == 1) {
+                    echo '<a href="">Đang giao</a>';
+                } else if ($row_bill['bill_status'] == 2) {
+                    echo '<a href="">Đã giao hàng</a>';
+                } else if ($row_bill['bill_status'] == -1) {
                     echo '<a href="">Đơn hàng đã hủy</a>';
-                }
-
-                else {
-                    echo '<a href="">Đã duyệt đơn hàng</a>';
                 }
                 ?>
             </td>

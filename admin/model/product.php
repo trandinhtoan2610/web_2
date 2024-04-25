@@ -60,4 +60,14 @@
         $sql='SELECT * FROM sanpham WHERE tenSP LIKE "%'.$ten.'%"';
         return getAll($sql);
     }
+
+    function isProductSelled($id){
+        $sql = 'SELECT idSP from ctdonhang where idSP = '.$id;
+        return getOne($sql)!=null;
+    }
+
+    function deleteProduct($id){
+        $sql = 'DELETE FROM sanpham WHERE idSP = '.$id;
+        return edit($sql);
+    }
 ?>

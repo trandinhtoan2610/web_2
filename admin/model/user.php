@@ -53,4 +53,21 @@
         $sql='SELECT * FROM taikhoan WHERE tenTK LIKE "%'.$ten.'%"';
         return getAll($sql);
     }
+
+    function top5Customer($start, $end){
+        $sql = 
+        'SELECT taikhoan.idTK, avatar, tenTK, dienthoai, SUM(tongtien) AS tongtien
+        FROM taikhoan INNER JOIN donhang ON taikhoan.idTK = donhang.idTK
+        WHERE 1';
+        $sql.=' AND donhang.trangthai = "ht"';
+        if(($start == '' && $end!='') || ($start != '' && $end=='')){
+            if($start == '') $sql.=' AND ngaycapnhat <= "'.$end.'"';
+            if($end == '') $sql.=' AND ngaycapnhat >= "'.$start.'"';
+        }
+        else if($start !='' && $end !='') $sql.=' AND ngaycapnhat BETWEEN "'.$start.'" AND "'.$end.'"';
+       $sql.=' GROUP BY taikhoan.idTK';
+       $sql.=' ORDER BY SUM(tongtien) DESC';
+       $sql.=' LIMIT 5';
+       return getAll($sql);
+    }
 ?>

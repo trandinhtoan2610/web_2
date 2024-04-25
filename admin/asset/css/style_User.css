@@ -101,7 +101,6 @@ main{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-	margin: 20px 0 0 90px;
 }
 
 .create-button:hover{
@@ -169,6 +168,7 @@ h1{
 	margin-top: 10px;
 }
 
+/* search */
 .search_result{
 	margin: 20px 0 10px 100px;
 	font-size: 20px;
@@ -178,7 +178,91 @@ h1{
 	color: green;
 	display: inline-block;
 }
+/* search */
 
+/* filter */
+.admin-controller{
+    margin: 10px auto;
+	width: 90%;
+    padding: 20px;
+    display: flex;
+	justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+.filter{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.filter select{
+	width: 150px;
+	height: 30px;
+	padding: 3px;
+	margin-right: 10px;
+	margin-top: 0;
+}
+
+.filter .search-box{
+    position: relative;
+    margin-right: 30px;
+}
+
+.filter .search-box input{
+    width: 300px;
+    padding: 0 10px 0 20px;
+    border: none;
+    border-bottom: 1px solid black;
+	border-radius: 0;
+    font-size: 14px;
+    height: 20px;
+}
+
+.filter .search-box input:focus{
+    outline: none;
+}
+
+.filter .search-box i{
+    position: absolute;
+    top: 3px;
+    left: 20px;
+}
+
+.date input{
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 16px;
+    padding: 3px;
+}
+
+.date span{
+    margin-right: 20px;
+}
+
+.show{
+    display: block;
+	width: 100px;
+	padding: 6px 7px ;
+    margin-left: 10px;
+	text-align: center;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.show:hover {
+    background-color: #DCDCDC;
+    color: #333;
+}
+/* filter */
+
+/* table */
 table{
 	margin: 10px auto;
 	width: 90%;
@@ -189,6 +273,13 @@ table{
 
 th{
 	font-size: 20px;
+}
+
+.nofound{
+	background-color: #ddd;
+	padding: 5px;
+	text-align: center;
+	font-size: 18px;
 }
 
 .user img{
@@ -233,6 +324,31 @@ input[type="checkbox"]{
 .green{
 	background-color: lightgreen;
 }
+
+.yellow{
+	background-color: lightgoldenrodyellow;
+}
+
+.orange{
+	background-color: gold;
+}
+
+.blue{
+	background-color: lightblue;
+}
+
+/* detail-order */
+.detail-order{
+	border-collapse: collapse;
+	margin: 20px auto;
+}
+
+.detail-order td, .detail-order th{
+	border: 0.5px solid lightslategray;
+	padding: 3px;
+}
+/* detail-order */
+
 /*button*/
 a{
 	text-decoration: none;
@@ -266,12 +382,6 @@ a{
 
 .action-button:hover .action-tooltip {
     display: block; /* Hiển thị bảng khi hover vào biểu tượng */
-}
-
-/* checkbox style */
-td input[type='checkbox'] {
-	width: 20px;
-    height: 20px;
 }
 
 /*phan trang*/

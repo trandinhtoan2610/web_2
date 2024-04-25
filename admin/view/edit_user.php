@@ -2,7 +2,7 @@
     include 'inc/header.php';
 ?>
 <h1>Sửa Thông Tin Người Dùng</h1>
-<form action="?page=edit_user&idTK=<?=$idTK?>" method="post" enctype="multipart/form-data" onsubmit="return formValidate(this)">
+<form id="edit-form-user" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="idTK" value="<?=$idTK?>">
 	<div class="change_img">
 		<img src="../uploads/uploads_user/<?=$avatar?>" alt="userAvatar" id="item_pic">
@@ -52,16 +52,6 @@
 	</div>
 </form>
 </section>
-<?php
-	if(isset($alert)){
-		echo
-		'<script>
-		window.addEventListener("load", () => {
-			alert("'.$alert.'");
-		  });
-		</script>';
-	}
-?>
 <?php
     include 'inc/footer.php';
 ?>

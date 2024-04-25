@@ -7,34 +7,10 @@
             <img src="asset/img/logo.png">
             </a>
         </li>
-        <?php
-            if($title == "Người dùng"){
-        ?>
-            <form class="right" method="post" action="?page=search_user">
-                <li>
-                    <input type="text" name="kyw" placeholder="Nhập từ khóa tìm kiếm ..."> 
-                    <button type="submit" name="search-user-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </li>
-                <li>
-                    <img src="account.jpg"><span>Thanh</span> 
-                </li>
-            </form>
-        <?php
-            }
-            else if($title = "Sản phẩm"){
-        ?>
-            <form class="right" method="post" action="?page=search_product">
-                <li>
-                    <input type="text" name="kyw" placeholder="Nhập từ khóa tìm kiếm ..."> 
-                    <button type="submit" name="search-product-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </li>
-                <li>
-                    <img src="account.jpg"><span>Thanh</span> 
-                </li>
-            </form>
-        <?php
-            }
-        ?>
+        
+        <li>
+            <img src="account.jpg"><span>Thanh</span> 
+        </li>
     </ul>
 </nav>
 </header> 
@@ -45,8 +21,8 @@
             <li><a href="?page=product">Sản phẩm</a></li>
             <li><a href="?page=category">Hãng sản xuất</a></li>
             <li><a href="?page=user">Người dùng</a></li>
-            <li><a href="orderAdmin.html">Đơn hàng</a></li>
-            <li><a href="thongKeAdmin.html">Thống kê</a></li>
+            <li><a href="?page=order">Đơn hàng</a></li>
+            <li><a href="?page=thongke">Thống kê</a></li>
         </ul>
     </aside>
     <section id="main">

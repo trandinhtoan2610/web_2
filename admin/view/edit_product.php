@@ -2,7 +2,7 @@
     include 'inc/header.php';
 ?>
 <h1>Sửa Thông Tin Sản Phẩm</h1>
-    <form action="?page=edit_product&idSP=<?=$idSP?>" method="post" enctype="multipart/form-data"  onsubmit="return formValidateProduct(this)">
+    <form id="edit-form-product" method="post" enctype="multipart/form-data">
         <input type="hidden" name="idSP" value="<?=$idSP?>">
     <div class="change_img">
 		<img src="../uploads/uploads_product/<?=$hinhanh?>" alt="productpic" id="item_pic">
@@ -57,10 +57,10 @@
             <span style="padding-left: 0;">
                 <label for="hoatdong" style="text-align: center; margin-left:10px; width:100px">Hoạt động</label>
                 <input type="radio" name="trangthai" value="1" id="hoatdong"
-                <?php if($trangthai==1) echo'checked'; ?>>
+                <?php if($trangthaiSP==1) echo'checked'; ?>>
                 <label for="khoa" style="text-align: center; width:100px;">Bị khóa</label>
                 <input type="radio" name="trangthai" value="0" id="khoa"
-                <?php if($trangthai==0) echo'checked'; ?>>
+                <?php if($trangthaiSP==0) echo'checked'; ?>>
             </span>
         </div>
         <div class="edit">
@@ -69,20 +69,11 @@
         </div>
         <div class="buttons">
             <a href="?page=product"><i class="fa-solid fa-x"></i>Đóng</a>
-            <button type="submit" name="edit-product-btn"><i class="fa-solid fa-download"></i>Cập nhật</button>
+            <button type="button" name="edit-product-btn"><i class="fa-solid fa-download"></i>Cập nhật</button>
+            <button type="button" name="delete-product-btn"><i class="fa-solid fa-trash"></i></i>Xóa</button>
         </div>
         </form>
 </section>
-<?php
-	if(isset($alert)){
-		echo
-		'<script>
-		window.addEventListener("load", () => {
-			alert("'.$alert.'");
-		  });
-		</script>';
-	}
-?>
 <?php
     include 'inc/footer.php';
 ?>

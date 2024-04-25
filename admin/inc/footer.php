@@ -3,5 +3,7 @@
 <script src="asset/js/script.js"></script>
 <script src="asset/js/user.js"></script>
 <script src="asset/js/product.js"></script>
+<script src="asset/js/category.js"></script>
+<script src="asset/js/order.js"></script>
 </body>
 </html>

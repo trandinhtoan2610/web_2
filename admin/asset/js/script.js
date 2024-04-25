@@ -84,7 +84,7 @@ function formValidateProduct(tenSP, giaban, tonkho, cpu, card, pin, ram, mota){
     }
 
     // tonkho
-    if(tonkho == "" || isNaN(tonkho) || tonkho <=0){
+    if(tonkho == "" || isNaN(tonkho) || tonkho <0){
         alert = "Vui lòng nhập tồn kho hợp lệ.";
         return alert;
     }
@@ -110,3 +110,63 @@ function formValidateCategory(tenHSX){
     return alert;
 }
 /* category validate */
+
+/* date validate : order-filter */
+function filterValidateOrder(form){
+    var start = new Date(form.start.value);
+    var end = new Date(form.end.value);
+
+    if(start>end){
+        alert("Vui lòng nhập thời gian hợp lệ");
+        return false;
+    }
+    return true;
+}
+/* date validate : order-filter */
+
+/* date validate : thongke-filter */
+function filterValidateThongKe(form){
+    var start = form.start.value;
+    var end = form.end.value;
+
+    if(start == "" && end == ""){
+        alert("Vui lòng nhập thời gian thống kê");
+        return false;
+    }
+    start = new Date(start);
+    end = new Date(end);
+
+    if(start>end){
+        alert("Vui lòng nhập thời gian hợp lệ");
+        return false;
+    }
+    return true;
+}
+/* date validate : thongke-filter */
+
+/* signIn validate */
+function formValidate(email, matkhau) {
+    let alert = '';
+    let emailRegex = /^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}$/;
+
+    //Email
+    if(email === '') {
+        alert = "Vui lòng nhập email của bạn.";
+        return alert;
+    }
+    else if(!emailRegex.test(email)) {
+        alert = "Email không hợp lệ.";
+        return alert;
+    }
+
+    //Mat khau
+    if(matkhau == ""){
+        alert = "Vui lòng nhập mật khẩu của bạn.";
+        return alert;
+    }
+
+    return alert;
+}
+/* signIn validate */
+
+

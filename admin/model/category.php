@@ -9,6 +9,10 @@
         return getAll($sql);
     }
 
+    function getCategoryByID($id){
+        $sql = 'SELECT idHSX as idhangsanxuat, tenHSX, trangthai, logo FROM hangsanxuat WHERE idHSX = '.$id;
+        return getOne($sql);
+    }
     function isCategoryExist($tenHSX){
         $sql = 'SELECT idHSX from hangsanxuat where tenHSX= "'.$tenHSX.'"';
         return getOne($sql)!=null;
@@ -48,7 +52,7 @@
 
     function searchCategory($ten){
         $ten = strtolower($ten);
-        $sql='SELECT * FROM hangsanxuat WHERE tenHSX LIKE "%'.$ten.'%"';
+        $sql='SELECT idHSX as idhangsanxuat, tenHSX, trangthai, logo FROM hangsanxuat WHERE tenHSX LIKE "%'.$ten.'%"';
         return getAll($sql);
     }
 ?>

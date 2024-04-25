@@ -1,5 +1,6 @@
 /* add-data form */
 $(document).ready(function() {
+
     $('#add-form-product').submit(function(event) {
         // Prevent the default form submission
         event.preventDefault();
@@ -19,7 +20,7 @@ $(document).ready(function() {
             var formData = new FormData( $('#add-form-product')[0]);
             // AJAX request to handle form submission
             $.ajax({
-                url: 'controller/add_product.php', // URL to handle form submission
+                url: 'controller/product.php', // URL to handle form submission
                 type: 'POST',
                 data: formData,
                 processData: false,
@@ -34,53 +35,81 @@ $(document).ready(function() {
         }
         else alert(note);
     });
+
+    /* Start: update product */
+    $('button[name="edit-product-btn"]').click(function(event){
+        // validate form
+        var tenSP = $('#edit-form-product input[name="tenSP"]').val();
+        var giaban = $('#edit-form-product input[name="giaban"]').val();
+        var tonkho = $('#edit-form-product input[name="tonkho"]').val();
+        var cpu = $('#edit-form-product input[name="cpu"]').val();
+        var card = $('#edit-form-product input[name="card"]').val();
+        var pin = $('#edit-form-product input[name="pin"]').val();
+        var ram = $('#edit-form-product input[name="ram"]').val();
+        var mota = $('#edit-form-product input[name="mota"]').val();
+        var note = formValidateProduct(tenSP, giaban, tonkho, cpu, card, pin, ram, mota);
+        if(note ===''){
+            console.log("hello");
+            // Serialize form data
+            var formData = new FormData( $('#edit-form-product')[0]);
+            formData.append('edit-product-btn', true);
+            // AJAX request to handle form submission
+            $.ajax({
+                url: 'controller/product.php', // URL to handle form submission
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    console.log(response);
+                    const obj = JSON.parse(response);
+                    if(obj.success) alert('Cập nhật thành công.');
+                    else alert('Sản phẩm này đã tồn tại.');
+                },
+            });
+        }
+        else alert(note);
+    });
+    /* End: update product */
+
     /* End: add form */
+    $('button[name="delete-product-btn"]').click(function(event){
+        // Prevent the default form submission
+        event.preventDefault();
 
-    /* Start: unlock */
-    $('.unlock_product').click(function() {
-        // Display the form as a pop-up
-        var product_id = $(this).closest('tr').find('.product_id').text();
+        var product_id = $('#edit-form-product input[name="idSP"]').val();
         $.ajax({
-            url: 'controller/active_product.php', // Replace with the actual PHP endpoint to fetch product details
+            url: 'controller/product.php', // Replace with the actual PHP endpoint to fetch user details
             type: 'POST',
             data: {
-                'unlock_product': true,
+                'delete-product': true,
                 'product_id': product_id,
             },
             success: function(response){
                 console.log(response);
                 const obj = JSON.parse(response);
                 if(obj.success){
-                    var curr_page = $('.curr_page').val();
-                    window.location.href="?page=product&index="+curr_page;
+                    if(confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")){
+                        console.log(product_id);
+                        $.ajax({
+                            url: 'controller/product.php', // Replace with the actual PHP endpoint to fetch user details
+                            type: 'POST',
+                            data: {
+                                'accept_delete_product': true,
+                                'product_id': product_id,
+                            },
+                            success: function(response){
+                                if(obj.success) window.location.href="?page=product";
+                            },
+                        });
+                    }   
+                } else{
+                    alert('Đã ẩn sản phẩm.');
+                    window.location.href="?page=product";
                 }
             },
         });
-   });
-    /* End: unlock */
-
-    /* Start: lock */
-    $('.lock_product').click(function() {
-        // Display the form as a pop-up
-        var product_id = $(this).closest('tr').find('.product_id').text();
-        $.ajax({
-            url: 'controller/active_product.php', // Replace with the actual PHP endpoint to fetch product details
-            type: 'POST',
-            data: {
-                'lock_product': true,
-                'product_id': product_id,
-            },
-            success: function(response){
-                console.log(response);
-                const obj = JSON.parse(response);
-                if(obj.success){
-                    var curr_page = $('.curr_page').val();
-                    window.location.href="?page=product&index="+curr_page;
-                }
-            },
-        });
-   });
-    /* End: lock */
+    });
 });
 
 

@@ -2,8 +2,8 @@
     include 'inc/header.php';
 ?>
 <h1>Sửa Thông Tin Hãng Sản Xuất</h1>
-    <form action="?page=edit_category&idHSX=<?=$idHSX?>" method="post" enctype="multipart/form-data"  onsubmit="return formValidateCategory(this)">
-        <input type="hidden" name="idHSX" value="<?=$idHSX?>">
+    <form id="edit-form-category" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="idHSX" value="<?=$idhangsanxuat?>">
     <div class="change_img">
 		<img src="../uploads/uploads_category/<?=$logo?>" alt="categorypic" id="item_pic">
 		<input type="hidden" name="curr_img" value="<?=$logo?>"> <!--luu lai img hien tai-->
@@ -31,16 +31,6 @@
         </div>
         </form>
 </section>
-<?php
-	if(isset($alert)){
-		echo
-		'<script>
-		window.addEventListener("load", () => {
-			alert("'.$alert.'");
-		  });
-		</script>';
-	}
-?>
 <?php
     include 'inc/footer.php';
 ?>

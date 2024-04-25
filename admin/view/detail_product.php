@@ -8,7 +8,7 @@
         </div>
         <div class="edit">
             <label for="idHSX">Hãng sản xuất</label>
-            <input type="text" value="<?=$tenHSX?>" disabled>
+            <input type="text" value="<?=$hangsanxuat['tenHSX']?>" disabled>
         </div>
         <div class="edit">
             <label for="tenSP">Tên sản phẩm</label>

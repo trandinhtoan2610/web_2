@@ -14,7 +14,7 @@
                 </li>
                 <li>
                         <?php
-                            $username = $_SESSION['username'];
+                            $username = $_SESSION['usernameadmin'];
                             echo "<p>Xin chào, $username!</p>";
                             echo "";
                         ?>

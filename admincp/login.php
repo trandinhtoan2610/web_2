@@ -13,7 +13,7 @@ if((isset($_POST['dangnhap']))){
         if ($password == $row['password'] && $row['type'] == 0) {
             // Đăng nhập thành công
             session_start();
-            $_SESSION['username'] = $row['username'];
+            $_SESSION['usernameadmin'] = $row['username'];
             $_SESSION['type'] = $row['type'];
             header("Location: index.php");
         }  else{

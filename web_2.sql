@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `bill` (
   `id_bill` int(11) NOT NULL,
   `bill_status` int(1) NOT NULL DEFAULT 1,
-  `id_user` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `thoigian` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -38,8 +38,8 @@ CREATE TABLE `bill` (
 -- Dumping data for table `bill`
 --
 
-INSERT INTO `bill` (`id_bill`, `bill_status`, `id_user`, `thoigian`) VALUES
-(5, 0, 3, '2024-04-14 19:24:38');
+INSERT INTO `bill` (`id_bill`, `bill_status`, `username`, `thoigian`) VALUES
+(5, 0, 'phat', '2024-04-14 19:24:38');
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,6 @@ INSERT INTO `sanpham` (`masp`, `id_hangsanxuat`, `hinhAnh`, `thutu`, `tensp`, `g
 --
 
 CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `diachi` varchar(255) NOT NULL,
@@ -130,9 +129,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `password`, `diachi`, `email`, `dienthoai`, `type`) VALUES
-(1, 'phatle', '123123', 'e4/5d', 'phat@gmail.com', '0338641606', 0),
-(3, 'phat', '123', 'e3/4d', 'phat1@gmail.com', '0338641606', 1);
+INSERT INTO `user` (`username`, `password`, `diachi`, `email`, `dienthoai`, `type`) VALUES
+('phatle', '123123', 'e4/5d', 'phat@gmail.com', '0338641606', 0),
+('phat', '123', 'e3/4d', 'phat1@gmail.com', '0338641606', 1);
 
 --
 -- Indexes for dumped tables
@@ -143,7 +142,7 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `diachi`, `email`, `dient
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`id_bill`) USING BTREE,
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `username` (`username`);
 
 --
 -- Indexes for table `bill_detail`
@@ -169,7 +168,7 @@ ALTER TABLE `sanpham`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -200,12 +199,6 @@ ALTER TABLE `sanpham`
   MODIFY `masp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- Constraints for dumped tables
 --
 
@@ -213,7 +206,7 @@ ALTER TABLE `user`
 -- Constraints for table `bill`
 --
 ALTER TABLE `bill`
-  ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`);
 
 --
 -- Constraints for table `bill_detail`

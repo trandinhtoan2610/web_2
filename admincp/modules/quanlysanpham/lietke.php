@@ -28,11 +28,7 @@ if (isset($_POST['timKiemSanPham'])) {
 
 <table> 
     <!--noi dung tieu de-->
-    <?php
-    $i = 0;
-    while ($row_sanpham = mysqli_fetch_array($sql_lietke)) {
-        $i++;
-    ?>
+    
         <tr class="title">
             <th>Mã</th>
             <th>Hình ảnh</th>
@@ -42,7 +38,11 @@ if (isset($_POST['timKiemSanPham'])) {
             <th>Trạng thái</th>
             <th>Thao tác</th>
         </tr>
-
+        <?php
+    $i = 0;
+    while ($row_sanpham = mysqli_fetch_array($sql_lietke)) {
+        $i++;
+    ?>
         <!--noi dung cac san pham-->
         <tr class="product">
             <td>

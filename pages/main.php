@@ -12,6 +12,9 @@
 		else if($tam=='history'){
 			include('main/history.php');
 		}
+		else if($tam=='bill_detail'){
+			include('main/bill_detail.php');
+		}
 		else include('main/index.php');
 		
 	?>

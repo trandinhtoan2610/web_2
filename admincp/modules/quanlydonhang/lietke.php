@@ -25,7 +25,7 @@ if (isset($_POST['locDonHang'])) {
             $filter_sql .= " AND bill.bill_status = $trangThai";
         }
 
-        $sql_lietke_bill = mysqli_query($conn, "SELECT * FROM bill, user WHERE bill.id_user = user.id_user" . $filter_sql . " ORDER BY bill.id_bill ASC");
+        $sql_lietke_bill = mysqli_query($conn, "SELECT * FROM bill, user WHERE bill.username = user.username" . $filter_sql . " ORDER BY bill.id_bill ASC");
 
         // if (!$sql_lietke_bill) {
         //     // Xử lý lỗi
@@ -37,11 +37,11 @@ if (isset($_POST['locDonHang'])) {
         // }
     } else {
         // Nếu không nhập ngày lọc và không chọn trạng thái đơn hàng, hiển thị tất cả đơn hàng
-        $sql_lietke_bill = mysqli_query($conn, 'SELECT * FROM bill, user WHERE bill.id_user = user.id_user ORDER BY bill.id_bill ASC');
+        $sql_lietke_bill = mysqli_query($conn, 'SELECT * FROM bill, user WHERE bill.username = user.username ORDER BY bill.id_bill ASC');
     }
 } else {
     // Nếu không có dữ liệu từ form, thực hiện truy vấn không có lọc
-    $sql_lietke_bill = mysqli_query($conn, 'SELECT * FROM bill, user WHERE bill.id_user = user.id_user ORDER BY bill.id_bill ASC');
+    $sql_lietke_bill = mysqli_query($conn, 'SELECT * FROM bill, user WHERE bill.username = user.username ORDER BY bill.id_bill ASC');
 }
 
 ?>

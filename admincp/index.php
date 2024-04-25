@@ -1,7 +1,7 @@
 <?php
 include("../admincp/config/config.php");
 session_start();
-if (!isset($_SESSION['username']) || !isset($_SESSION['type'])) {
+if (!isset($_SESSION['usernameadmin']) || !isset($_SESSION['type'])) {
     header("Location: login.php");
     exit(); 
 }

@@ -56,6 +56,16 @@
                     break;
             }
             break;
+        case 'qlthongke':
+                switch ($query) {
+                    case 'thongke':
+                        include("../admincp/modules/qlthongke/thongke.php");
+                        break;
+                    case 'chitietdonhang':
+                        include("../admincp/modules/qlthongke/chi_tiet_don_hang.php");
+                        break;
+                }
+        break;
         default:
             include("../admincp/modules/chaomung.php");
             break;

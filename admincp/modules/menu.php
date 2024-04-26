@@ -5,7 +5,7 @@
             <li><a href="index.php?action=quanlyhangsanxuat&query=lietke">Hãng sản xuất</a></li>
             <li><a href="index.php?action=quanlydonhang&query=lietke">Đơn hàng</a></li>
             <li><a href="index.php?action=quanlynguoidung">Người dùng</a></li>
-            <li><a href="index.php?action=thongke">Thống kê</a></li>
+            <li><a href="index.php?action=qlthongke&query=thongke">Thống kê</a></li>
         </ul>
     </aside>
 

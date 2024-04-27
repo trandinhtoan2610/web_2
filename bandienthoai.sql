@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 20, 2024 lúc 04:02 PM
+-- Thời gian đã tạo: Th4 27, 2024 lúc 01:11 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -28,10 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `ctdonhang` (
-  `idDH` int(11) NOT NULL,
-  `idTK` int(11) NOT NULL,
-  `soluong` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `id` int(11) NOT NULL,
+  `idHD` int(11) NOT NULL,
+  `idSP` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `ctdonhang`
+--
+
+INSERT INTO `ctdonhang` (`id`, `idHD`, `idSP`, `quantity`) VALUES
+(1, 1, 15, 3),
+(2, 1, 16, 3),
+(3, 1, 17, 3);
 
 -- --------------------------------------------------------
 
@@ -48,6 +58,13 @@ CREATE TABLE `donhang` (
   `trangthai` varchar(5) NOT NULL,
   `diachigiao` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `donhang`
+--
+
+INSERT INTO `donhang` (`idDH`, `idTK`, `tongtien`, `ngaytao`, `ngaycapnhat`, `trangthai`, `diachigiao`) VALUES
+(1, 38, 100000, '2024-04-27', '2024-04-27', '0', '123 Nguyễn Thị Thập');
 
 -- --------------------------------------------------------
 
@@ -120,20 +137,21 @@ CREATE TABLE `taikhoan` (
   `dienthoai` char(10) NOT NULL,
   `trangthai` bit(1) NOT NULL,
   `phanquyen` char(2) NOT NULL,
-  `avatar` varchar(30) NOT NULL
+  `avatar` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `taikhoan`
 --
 
-INSERT INTO `taikhoan` (`idTK`, `tenTK`, `diachi`, `email`, `dienthoai`, `trangthai`, `phanquyen`, `avatar`) VALUES
-(3, 'Le Thi Thao Van', '5 Ngo Tat To, Nha Trang, Khanh Hoa', 'thaovan123@gmail.com', '0905630032', b'1', 'AD', '986482.jpg'),
-(38, 'Le Ngoc Thao Mi', '5 cau ho, nha trang, khanh hoa', 'thaovy3724@gmail.com', '0794988553', b'0', 'KH', '959723.jpg'),
-(40, 'Le Ngoc Thao Mi', '5 cau ho, nha trang, khanh hoa', 'thaovy3724@gmail.com', '0794988553', b'1', 'KH', 'person.png'),
-(56, 'Nguyễn Thảo Mi', '88 nguyễn thái học, tp Nha Trang ', 'minguyen123@gmail.com', '0905630032', b'1', 'KH', 'person.png'),
-(58, 'Nguyễn Kiều Diễm', '123 An Dương Vương, q5, tp Hồ Chí Minh', 'kieudiem123@gmail.com', '0778052785', b'1', 'AD', '354196.jpg'),
-(60, 'Nguyễn Ánh Ngọc', '77 Phan Đình Giót, tp Nha Trang', 'thaovy724@gmail.com', '0778052784', b'1', 'AD', 'person.png');
+INSERT INTO `taikhoan` (`idTK`, `tenTK`, `diachi`, `email`, `dienthoai`, `trangthai`, `phanquyen`, `avatar`, `password`) VALUES
+(3, 'Le Thi Thao Van', '5 Ngo Tat To, Nha Trang, Khanh Hoa', 'thaovan123@gmail.com', '0905630032', b'1', 'AD', '986482.jpg', '123123'),
+(38, 'Le Ngoc Thao Mi', '5 cau ho, nha trang, khanh hoa', 'thaovy3724@gmail.com', '0794988553', b'0', 'KH', '959723.jpg', '123123'),
+(40, 'Le Ngoc Thao Mi', '5 cau ho, nha trang, khanh hoa', 'thaovy3724@gmail.com', '0794988553', b'1', 'KH', 'person.png', '123123'),
+(56, 'Nguyễn Thảo Mi', '88 nguyễn thái học, tp Nha Trang ', 'minguyen123@gmail.com', '0905630032', b'1', 'KH', 'person.png', '123123'),
+(58, 'Nguyễn Kiều Diễm', '123 An Dương Vương, q5, tp Hồ Chí Minh', 'kieudiem123@gmail.com', '0778052785', b'1', 'AD', '354196.jpg', '123123'),
+(60, 'Nguyễn Ánh Ngọc', '77 Phan Đình Giót, tp Nha Trang', 'thaovy724@gmail.com', '0778052784', b'1', 'AD', 'person.png', '123123');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -143,8 +161,9 @@ INSERT INTO `taikhoan` (`idTK`, `tenTK`, `diachi`, `email`, `dienthoai`, `trangt
 -- Chỉ mục cho bảng `ctdonhang`
 --
 ALTER TABLE `ctdonhang`
-  ADD PRIMARY KEY (`idDH`,`idTK`),
-  ADD KEY `idTK` (`idTK`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idHD` (`idHD`),
+  ADD KEY `idSP` (`idSP`);
 
 --
 -- Chỉ mục cho bảng `donhang`
@@ -176,10 +195,16 @@ ALTER TABLE `taikhoan`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `ctdonhang`
+--
+ALTER TABLE `ctdonhang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `idDH` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idDH` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `hangsanxuat`
@@ -207,8 +232,8 @@ ALTER TABLE `taikhoan`
 -- Các ràng buộc cho bảng `ctdonhang`
 --
 ALTER TABLE `ctdonhang`
-  ADD CONSTRAINT `ctdonhang_ibfk_1` FOREIGN KEY (`idDH`) REFERENCES `donhang` (`idDH`),
-  ADD CONSTRAINT `ctdonhang_ibfk_2` FOREIGN KEY (`idTK`) REFERENCES `taikhoan` (`idTK`);
+  ADD CONSTRAINT `ctdonhang_ibfk_1` FOREIGN KEY (`idHD`) REFERENCES `donhang` (`idDH`),
+  ADD CONSTRAINT `ctdonhang_ibfk_2` FOREIGN KEY (`idSP`) REFERENCES `sanpham` (`idSP`);
 
 --
 -- Các ràng buộc cho bảng `sanpham`

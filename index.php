@@ -2,6 +2,8 @@
 include 'lib/connect.php';
 include 'model/product.php';
 include 'model/category.php';
+include 'model/invoice.php';
+include 'model/detail_invoice.php';
 session_start();
 if(isset($_GET['page'])&&($_GET['page']!=="")){
     switch(trim($_GET['page'])){
@@ -24,7 +26,12 @@ if(isset($_GET['page'])&&($_GET['page']!=="")){
         case 'productDetail':
             require 'controller/productDetail.php';
             break;
-            
+        case 'history':
+            require 'controller/history.php';
+            break;
+        case 'detail_invoice':
+            require 'controller/detail_invoice.php';
+            break;
         default: 
             require "controller/home.php";
             break;

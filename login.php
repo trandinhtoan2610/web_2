@@ -1,3 +1,38 @@
+<?php
+    session_start();
+    ob_start();
+    include "./lib/connect.php";
+    include "./model/user.php";
+    if((isset($_POST['dangnhap']))){
+        $username = $_POST['user'];
+        $password = $_POST['pass'];
+        $result = checkuser($username,$password);
+        if($result != null){
+            if($result['phanquyen'] == "KH" && $result['password']) {
+                $_SESSION['idUser'] = $result['idTK'];
+                $_SESSION['tenTK'] = $result['tenTK'];
+                header("Location: index.php");
+            }else{
+                $error_msg = "Mật khẩu không chính xác";
+            }
+        } else {
+            $error_msg = "Người dùng không tồn tại";
+        }
+    }
+
+    if((isset($_POST['dangky']))){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $re_password = $_POST['re-password'];
+        if($password == $re_password){
+            $stmt = $conn->prepare("INSERT INTO `user`(`username`, `password`, `type`) VALUES (?,?,1)");
+            $stmt->bind_param("ss", $username,$password);
+            $stmt->execute();
+        }
+    }
+    $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +48,15 @@
     <div class="wrapper">
         <div class=" form-box login">
             <h1>Đăng nhập</h1>
-            <form action="index.php">
-                <input type="text" placeholder="Tên đăng nhập" required> 
-                <input type="password" placeholder="Mật khẩu" required>
-                <button>ĐĂNG NHẬP</button>
+            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                <input type="text" name="user" placeholder="Tên đăng nhập" > 
+                <input type="password" name="pass" placeholder="Mật khẩu" >
+                <?php
+                    if (isset($error_msg)) {
+                    echo '<span style="color: red;">' . $error_msg . '</span><br/>';
+                    }
+                ?>
+                <button type="submit" name="dangnhap">ĐĂNG NHẬP</button>
                 <p>Bạn mới biết đến Thế Giới Di Động ?</p> 
                 <a href="#" class="register-link">Đăng ký</a>
             </form>
@@ -24,14 +64,15 @@
     
         <div class="form-box register">
             <h1>Đăng ký</h1>
-            <form action="login.php">
-                <input type="email" placeholder="Email" required> 
-                <input type="tel" placeholder="Số điện thoại" required>
-                <input type="text" placeholder="Tên đăng nhập" required> 
-                <input type="password" placeholder="Mật khẩu" required>
-                <input type="password" placeholder="Nhập lại mật khẩu" required>
+            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                <input id="txtUser" type="text" name="username" placeholder="Tên đăng nhập" onkeyup="showHint(this.value)" >
+                <span id="txtHint" style="color: red"></span> 
+                <input id="password" type="password" name="password" placeholder="Mật khẩu" >
+                <input id="confirm_password" type="password" name="re-password" placeholder="Nhập lại mật khẩu" onkeyup="validatePassword()">
+                <span id="confirmMessage"></span><br/>
+                <span id="username_feedback"></span><br/>
                 <label><input type="checkbox">Tôi đồng ý với các <a href="#"></a>Điều khoản dịch vụ</a> & <a href="#">Chính sách bảo mật</a></label>
-                <button>ĐĂNG KÝ</button>
+                <button id="btn-register" type="submit" name="dangky" disabled>ĐĂNG KÝ</button>
                 <p>Bạn đã có tài khoản? <a href="#" class="login-link">Đăng nhập</a></p>
             </form>
         </div>
@@ -41,13 +82,50 @@
         const loginLink=document.querySelector('.login-link');
         const registerLink=document.querySelector('.register-link');
         const title=document.querySelector('.title');
-
+        const btn_register = document.getElementById("btn-register");
+        const txtHint = document.getElementById("txtHint");                          
         registerLink.addEventListener('click',()=>{
             wrapper.classList.add('active');
         });
         loginLink.addEventListener('click',()=>{
             wrapper.classList.remove('active');
         });
+
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm_password").value;
+            var message = document.getElementById("confirmMessage");
+            if(password == '' || confirmPassword==''){
+                message.innerHTML = "";
+            } else if (password == confirmPassword) {
+                message.innerHTML = "Mật khẩu trùng khớp";
+                message.style.color = "green";
+                btn_register.disabled = false;
+            } else {
+                message.innerHTML = "Mật khẩu không trùng khớp";
+                message.style.color = "red";
+                btn_register.disabled = true;
+            }
+            if(document.getElementById("txtUser").value == "" || txtHint.innerHTML.trim() !== ""){
+                btn_register.disabled = true;
+            }  
+        }
+
+        function showHint(str) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                txtHint.innerHTML = this.responseText;
+                if(document.getElementById("txtUser").value !== "" && document.getElementById("password").value !== "" && document.getElementById("confirm_password").value !== "" ){
+                if( txtHint.innerHTML.trim() === "" && document.getElementById("password").value === document.getElementById("confirm_password").value){
+                    btn_register.disabled = false;
+                }else btn_register.disabled = true;
+            } else btn_register.disabled = true;
+                }
+            };
+            xmlhttp.open("GET", "./controller/register.php?q=" + str, true);
+            xmlhttp.send();
+        }
     </script>
 </body>
 </html>

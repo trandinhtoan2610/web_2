@@ -16,6 +16,7 @@
         $result= $GLOBALS['conn']->query($sql)->fetch_assoc();
         return $result;
     }
+    
     function insert($sql){
         $GLOBALS['conn']->query($sql);
     }

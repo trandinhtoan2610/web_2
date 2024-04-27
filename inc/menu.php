@@ -23,15 +23,41 @@
                 </a>
             </li>
             <li>
+                <?php
+                    if(!isset($_SESSION['tenTK'])){
+                ?>
                 <a onclick="remind()">
                 <i class="fa-solid fa-clock-rotate-left"></i>
                 Lịch sử mua hàng
                 </a>
+                <?php
+                    }else{
+                ?>
+                <a href="?page=history">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Lịch sử mua hàng
+                </a>
+                <?php
+                    }
+                ?>
             </li>
+
             <li>
-                <a href="reglog.html">
+                <?php
+                    if(!isset($_SESSION['tenTK'])){
+                ?>
+                <a href="./login.php">
                 <i class="fa-solid fa-circle-user"></i>Đăng nhập
                 </a>
+                <?php
+                    }else{
+                ?>
+                    <a href="./logout.php">
+                    <i class="fa-solid fa-circle-user"></i>Đăng xuất
+                    </a>
+                <?php
+                    }
+                ?>
             </li>
         </ul>
     </nav>

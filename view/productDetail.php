@@ -2,14 +2,18 @@
 include_once 'inc/header_detail.php';
 ?>
 		<main>
-			<section>
+			<section id="product">
 					<div class = "characteristics"> 
+                        <input type="hidden" name="idSP" value="<?=$idSP?>">
+                        <input type="hidden" name="hinhanh" value="<?=$hinhanh?>">
 						<img src="uploads/uploads_product/<?=$hinhanh?>">
                         <div>
-                            <h1><?=$tenSP?></h1>
+                            <input type="hidden" name="tenSP" value="<?=$tenSP?>">
+                            <h1 class="tenSP"><?=$tenSP?></h1>
                             <hr></hr>
+                            <input type="hidden" name="giaban" value="<?=$giaban?>">
                             <div class="price"><?=number_format($giaban,0,"",".");?>đ</div>
-                            <a onclick="remind()"><button class="addToCart">THÊM VÀO GIỎ HÀNG</button></a>
+                            <button class="addToCart">THÊM VÀO GIỎ HÀNG</button>
                         </div>
                     </div>
                     

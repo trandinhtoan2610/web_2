@@ -20,8 +20,11 @@ $(document).ready(function() {
                 success: function(response) {
                     console.log(response);
                     const obj = JSON.parse(response);
-                    if(obj.success) alert('Cập nhật thành công.');
-                    else alert('Người này đã tồn tại do trùng email hoặc số điện thoại.');
+                    if(obj.success){
+                        alert('Đăng nhập thành công.');
+                        window.location.href="?page=product";
+                    }
+                    else alert('Email hoặc mật khẩu không đúng.');
                 },
             });
         }

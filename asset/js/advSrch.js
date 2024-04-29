@@ -10,8 +10,7 @@ function formSrchValidate(form) {
         alert("vui lòng điền thông tin!");
         return false;
     }
-
-
+    
     if(isNaN(priceFrom) || isNaN(priceTo)){
         alert("Khoảng giá không hợp lệ");
         return false;

@@ -85,5 +85,5 @@ if(isset($_GET['page'])&&($_GET['page']!=="")){
             break;
     }
 }
-else header('location: ?page=product');
+else header('location: ?page=signIn');
 ?>

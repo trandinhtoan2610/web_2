@@ -17,7 +17,7 @@
                 <a href="?page=advSrch">Tìm kiếm nâng cao</a>
             </li>
             <li>
-                <a onclick="remind()">
+                <a href="?page=giohang">
                 <i class="fa-solid fa-cart-shopping"></i>
                 Giỏ hàng 
                 </a>

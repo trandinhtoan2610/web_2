@@ -70,4 +70,9 @@
        $sql.=' LIMIT 5';
        return getAll($sql);
     }
+
+    function getUserByEmail($email){
+        $sql = 'SELECT * FROM taikhoan WHERE email = "'.$email.'" AND phanquyen="AD"';
+        return getOne($sql);
+    }
 ?>

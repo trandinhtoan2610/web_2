@@ -2,7 +2,13 @@
 include 'lib/connect.php';
 include 'model/product.php';
 include 'model/category.php';
+include 'model/user.php';
+include 'model/order.php';
+
 session_start();
+// unset($_SESSION['cart']);
+$_SESSION['idTK'] = 40; // test
+
 if(isset($_GET['page'])&&($_GET['page']!=="")){
     switch(trim($_GET['page'])){
         case 'home':
@@ -25,6 +31,18 @@ if(isset($_GET['page'])&&($_GET['page']!=="")){
             require 'controller/productDetail.php';
             break;
             
+        case 'giohang':
+            require 'controller/cart.php';
+            break;
+
+        case 'hoadon':
+            require 'controller/hoadon.php';
+            break;
+        
+        case 'thanhtoanonline':
+            require 'controller/cart.php';
+            break;
+
         default: 
             require "controller/home.php";
             break;

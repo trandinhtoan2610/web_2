@@ -36,7 +36,8 @@ img{
 }
 
 .wrapper.active{
-    height: 520px;
+    height: 650px;
+    
 }
 
 .wrapper .form-box.register{
@@ -125,3 +126,21 @@ input[type="checkbox"]{
     height: 15px;
     margin-right: 2px;
 }
+
+
+.css_select_div {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+  }
+  .css_select {
+    display: flex;
+    flex :1;
+    width: 40%;
+    height: 30px;
+    margin: 5px 0 ;
+    
+
+    border: 0.5px solid rgb(221, 201, 201);
+    border-radius: 5px;
+  }

@@ -6,7 +6,6 @@ session_start();
 session_unset(); // Xóa tất cả các biến phiên
 session_destroy(); // Hủy toàn bộ phiên
 
-// Chuyển hướng người dùng đến trang chủ hoặc bất kỳ trang nào khác
 header("Location: index.php");
 exit();
 ?>

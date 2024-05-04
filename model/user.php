@@ -9,4 +9,9 @@ function checkEmailExist($user){
     return getOne($sql);
 }
 
+function registerUser($tenTK, $diachi, $email, $dienthoai, $avatar, $password){
+    $sql= 'INSERT INTO taikhoan(tenTK, diachi, email, dienthoai, trangthai, phanquyen, avatar,password) VALUES ("'. $tenTK .'","'. $diachi .'","'.$email.'","'.$dienthoai.'", 1 ,"KH","'.$avatar.'","'.$password.'")';
+    return insert($sql);
+}
+   
 ?>

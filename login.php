@@ -6,7 +6,7 @@
     if((isset($_POST['dangnhap']))){
         $username = $_POST['user'];
         $password = $_POST['pass'];
-        $result = checkuser($username,$password);
+        $result = checkuser($username,md5($password));
         if($result != null){
             if($result['phanquyen'] == "KH" && $result['password']) {
                 $_SESSION['idUser'] = $result['idTK'];
@@ -21,13 +21,15 @@
     }
 
     if((isset($_POST['dangky']))){
-        $username = $_POST['username'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
         $re_password = $_POST['re-password'];
+        $diachi = $_POST['phuong'] . ", " .$_POST['quan'] .", ". $_POST['tinh'];
+        $phone = $_POST['phonenumber'];
+        $username = $_POST['username'];
         if($password == $re_password){
-            $stmt = $conn->prepare("INSERT INTO `user`(`username`, `password`, `type`) VALUES (?,?,1)");
-            $stmt->bind_param("ss", $username,$password);
-            $stmt->execute();
+            $hashed_password = md5($password);
+            registerUser($username, $diachi, $email , $phone, 'test.png', $hashed_password);
         }
     }
     $conn->close();
@@ -41,12 +43,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--đổi title khi nhấn registerLink-->
     <title class="title">Đăng nhập</title>
-    <link rel="stylesheet" href="./css/style_Reglog.css">
+    <link rel="stylesheet" href="./asset/css/style_Reglog.css">
+    <style type="text/css">
+      
+    </style>
 </head>
 <body>
     <img src="./img/thegioididong.png" alt="thegioididong">
-    <div class="wrapper">
-        <div class=" form-box login">
+    <div class="wrapper" >
+        <div class=" form-box login" >
             <h1>Đăng nhập</h1>
             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                 <input type="text" name="user" placeholder="Tên đăng nhập" > 
@@ -62,70 +67,36 @@
             </form>
         </div>
     
-        <div class="form-box register">
+        <div class="form-box register" >
             <h1>Đăng ký</h1>
             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-                <input id="txtUser" type="text" name="username" placeholder="Tên đăng nhập" onkeyup="showHint(this.value)" >
+                <input id="txtUser" type="text" name="email" placeholder="Email" onkeyup="showHint(this.value)" >
                 <span id="txtHint" style="color: red"></span> 
-                <input id="password" type="password" name="password" placeholder="Mật khẩu" >
+                <input id="password" type="password" name="password" placeholder="Mật khẩu" onkeyup="validatePassword()">
                 <input id="confirm_password" type="password" name="re-password" placeholder="Nhập lại mật khẩu" onkeyup="validatePassword()">
                 <span id="confirmMessage"></span><br/>
-                <span id="username_feedback"></span><br/>
-                <label><input type="checkbox">Tôi đồng ý với các <a href="#"></a>Điều khoản dịch vụ</a> & <a href="#">Chính sách bảo mật</a></label>
+                <input id="txtUserName" type="text" name="username" placeholder="Họ và tên"  >
+                <input id="txtPhoneNumber" type="text" name="phonenumber" placeholder="Số điện thoại" onkeyup="showHint(this.value)" >
+                <div class="css_select_div">
+                    <select class="css_select" id="tinh" name="tinh" title="Chọn Tỉnh Thành">
+                        <option value="0">Tỉnh Thành</option>
+                    </select>
+                    <select class="css_select" id="quan" name="quan" title="Chọn Quận Huyện">
+                        <option value="0">Quận Huyện</option>
+                    </select>
+                    <select class="css_select" id="phuong" name="phuong" title="Chọn Phường Xã">
+                        <option value="0">Phường Xã</option>
+                    </select>
+                </div>
+                
                 <button id="btn-register" type="submit" name="dangky" disabled>ĐĂNG KÝ</button>
                 <p>Bạn đã có tài khoản? <a href="#" class="login-link">Đăng nhập</a></p>
             </form>
         </div>
     </div>
-    <script>
-        const wrapper=document.querySelector('.wrapper');
-        const loginLink=document.querySelector('.login-link');
-        const registerLink=document.querySelector('.register-link');
-        const title=document.querySelector('.title');
-        const btn_register = document.getElementById("btn-register");
-        const txtHint = document.getElementById("txtHint");                          
-        registerLink.addEventListener('click',()=>{
-            wrapper.classList.add('active');
-        });
-        loginLink.addEventListener('click',()=>{
-            wrapper.classList.remove('active');
-        });
-
-        function validatePassword() {
-            var password = document.getElementById("password").value;
-            var confirmPassword = document.getElementById("confirm_password").value;
-            var message = document.getElementById("confirmMessage");
-            if(password == '' || confirmPassword==''){
-                message.innerHTML = "";
-            } else if (password == confirmPassword) {
-                message.innerHTML = "Mật khẩu trùng khớp";
-                message.style.color = "green";
-                btn_register.disabled = false;
-            } else {
-                message.innerHTML = "Mật khẩu không trùng khớp";
-                message.style.color = "red";
-                btn_register.disabled = true;
-            }
-            if(document.getElementById("txtUser").value == "" || txtHint.innerHTML.trim() !== ""){
-                btn_register.disabled = true;
-            }  
-        }
-
-        function showHint(str) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                txtHint.innerHTML = this.responseText;
-                if(document.getElementById("txtUser").value !== "" && document.getElementById("password").value !== "" && document.getElementById("confirm_password").value !== "" ){
-                if( txtHint.innerHTML.trim() === "" && document.getElementById("password").value === document.getElementById("confirm_password").value){
-                    btn_register.disabled = false;
-                }else btn_register.disabled = true;
-            } else btn_register.disabled = true;
-                }
-            };
-            xmlhttp.open("GET", "./controller/register.php?q=" + str, true);
-            xmlhttp.send();
-        }
-    </script>
+    <script src="https://esgoo.net/scripts/jquery.js"></script>
+    <script src="./asset/js/login.js"></script>
+        
+    
 </body>
 </html>

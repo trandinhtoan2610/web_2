@@ -4,5 +4,4 @@ function getDetailInvoicebyID($id){
     return getAll($sql);
 }
     
-    
 ?>

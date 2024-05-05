@@ -9,7 +9,7 @@
         </li>
         
         <li>
-            <img src="account.jpg"><span>Thanh</span> 
+            <?=$_SESSION['tenTKAd']?> <a href="?page=logout"><span style="margin-left: 10px;">Đăng xuất</span></a>
         </li>
     </ul>
 </nav>

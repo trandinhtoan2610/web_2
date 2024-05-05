@@ -71,17 +71,26 @@
         <div class="edit">
             <label for="trangthai">Trạng thái</label>
             <select name="trangthai">
+                <option value="cho" 
                 <?php
-                    if($trangthai=="cho"){
-                        echo '<option value="cho" selected>Chờ duyệt</option>';
-                        echo '<option value="vc">Đang vận chuyển</option>';
-                        echo '<option value="huynv">Hủy bởi nhân viên</option>';
-                    }
-                    else if($trangthai=="vc"){
-                        echo '<option value="vc" selected>Đang vận chuyển</option>';
-                        echo '<option value="ht">Hoàn tất</option>';
-                    }
+                    if($trangthai == 'cho') echo 'selected';
                 ?>
+                >Chờ duyệt</option>
+                <option value="vc"
+                <?php
+                    if($trangthai == 'vc') echo 'selected';
+                ?>
+                >Đang vận chuyển</option>
+                <option value="ht"
+                <?php
+                    if($trangthai == 'ht') echo 'selected';
+                ?>
+                >Hoàn tất</option>
+                <option value="huynv"
+                <?php
+                    if($trangthai == 'huynv') echo 'selected';
+                ?>
+                >Hủy bởi nhân viên</option>
             </select>
         </div>
         <div class="buttons">

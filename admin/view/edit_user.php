@@ -4,12 +4,6 @@
 <h1>Sửa Thông Tin Người Dùng</h1>
 <form id="edit-form-user" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="idTK" value="<?=$idTK?>">
-	<div class="change_img">
-		<img src="../uploads/uploads_user/<?=$avatar?>" alt="userAvatar" id="item_pic">
-		<input type="hidden" name="curr_img" value="<?=$avatar?>"> <!--luu lai img hien tai-->
-		<label for="item_file" class="change_button">Thay đổi</label>
-		<input type="file" name="input_file" id="item_file" accept="image/*">
-	</div>
 	<div class="edit"> <!--phan loai user-->
 		<label for="loaiUser">Loại người dùng</label>
 		<select name="phanquyen" id="loaiUser">

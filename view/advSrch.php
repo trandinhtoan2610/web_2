@@ -4,7 +4,7 @@
     <main>
         <section>
             <h2>Tìm kiếm nâng cao</h2>
-            <form action="?page=search" method="post" onsubmit="return formSrchValidate(this)">
+            <form action="?page=search" method="post">
                     <div>
                         <label for="name">Tên sản phẩm</label>
                         <input type="text" name="tenSP">
@@ -34,5 +34,5 @@
         </section>
     </main>
 <?php 
-    include_once 'inc/footerSrch.php';
+    include_once 'inc/footer.php';
 ?>  

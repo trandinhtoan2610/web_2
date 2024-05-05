@@ -9,16 +9,15 @@
         return getOne($sql);
     }
     
-    function addUSer($avatar, $ten, $email, $dienthoai, $diachi, $phanquyen){
-        $sql='insert into taikhoan(avatar, tenTK, email, dienthoai, diachi, phanquyen, trangthai) values ("'.$avatar.'","'.$ten.'","'.$email.'","'.$dienthoai.'","'.$diachi.'","'.$phanquyen.'",1)';
+    function addUSer($ten, $email, $dienthoai, $diachi, $phanquyen, $matkhau){
+        $sql='insert into taikhoan(tenTK, email, dienthoai, diachi, phanquyen, trangthai, matkhau) values ("'.$ten.'","'.$email.'","'.$dienthoai.'","'.$diachi.'","'.$phanquyen.'",1,"'.$matkhau.'")';
         insert($sql);
     }
 
-    function editUser($id,$picProfile,$ten, $email, $dienthoai, $diachi, $phanquyen, $trangthai){
+    function editUser($id, $ten, $email, $dienthoai, $diachi, $phanquyen, $trangthai){
         $sql = 
         'UPDATE taikhoan
-        SET avatar = "'.$picProfile.'",
-        tenTK = "'.$ten.'",
+        SET tenTK = "'.$ten.'",
         email = "'.$email.'",
         dienthoai = "'.$dienthoai.'",
         diachi = "'.$diachi.'",
@@ -29,12 +28,12 @@
     }
 
     function isUserExist($email, $dienthoai){
-        $sql = 'select idTK from taikhoan where email= "'.$email.'" or dienthoai= "'.$dienthoai.'"';
+        $sql = 'select idTK from taikhoan where email= "'.$email.'"';
         return getOne($sql)!=null;
     }
 
     function isUserExist_update($idTK, $email, $dienthoai){
-        $sql = 'select idTK from taikhoan where (email = "'.$email.'" or dienthoai = "'.$dienthoai.'") and idTK!='.$idTK;
+        $sql = 'select idTK from taikhoan where (email = "'.$email.'") and idTK!='.$idTK;
         return getOne($sql)!=null;
     }
     
@@ -56,7 +55,7 @@
 
     function top5Customer($start, $end){
         $sql = 
-        'SELECT taikhoan.idTK, avatar, tenTK, dienthoai, SUM(tongtien) AS tongtien
+        'SELECT taikhoan.idTK, tenTK, dienthoai, SUM(tongtien) AS tongtien
         FROM taikhoan INNER JOIN donhang ON taikhoan.idTK = donhang.idTK
         WHERE 1';
         $sql.=' AND donhang.trangthai = "ht"';
@@ -73,6 +72,15 @@
 
     function getUserByEmail($email){
         $sql = 'SELECT * FROM taikhoan WHERE email = "'.$email.'" AND phanquyen="AD"';
+        return getOne($sql);
+    }
+
+    function checkuser($user,$pass){
+        $sql='SELECT * FROM taikhoan 
+        WHERE email = "'. $user .'"
+        AND matkhau = "' . $pass .'"
+        AND phanquyen = "AD"
+        AND trangthai = 1';
         return getOne($sql);
     }
 ?>

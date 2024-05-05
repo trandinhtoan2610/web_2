@@ -80,6 +80,10 @@ if(isset($_GET['page'])&&($_GET['page']!=="")){
             break;
         /* dang nhap */
 
+        case 'logout':
+            require 'controller/logout.php';
+            break;
+            
         default: 
             header('location: ?page=product');
             break;

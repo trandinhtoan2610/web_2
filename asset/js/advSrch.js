@@ -12,10 +12,12 @@ function formSrchValidate(form) {
     }
     
     if(isNaN(priceFrom) || isNaN(priceTo)){
-        alert("Khoảng giá không hợp lệ");
+        alert("Khoảng giá không hợp lệ1");
         return false;
     }
 
+    priceFrom = parseFloat(priceFrom);
+    priceTo = parseFloat(priceTo);
     if(priceFrom<=0 || priceTo<=0 || (priceFrom > priceTo)){
         alert("Khoảng giá không hợp lệ");
         return false;

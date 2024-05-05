@@ -3,9 +3,6 @@
 ?>
 <h1>Thông Tin Người Dùng</h1>
 <form>
-    <div class="change_img">
-        <img src="../uploads/uploads_user/<?=$avatar?>" alt="avatar" id="item_pic" style="margin-bottom: 10px;">
-    </div>
     <div class="edit">
         <label for="product_name">Loại người dùng</label>
         <input type="text" 

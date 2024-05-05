@@ -7,16 +7,19 @@
     <!--đổi title khi nhấn registerLink-->
     <title class="title">Đăng nhập</title>
     <link rel="stylesheet" href="asset/css/style_signIn.css">
-    <link rel="stylesheet" href="asset/js/signIn.js">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="asset/js/script.js"></script>
+    <script src="asset/js/signIn.js"></script>
 </head>
 <body>
     <img src="asset/img/logo.png" alt="thegioididong">
     <div class="wrapper">
-        <div class=" form-box login">
+        <div class="form-box login">
             <h1>Đăng nhập</h1>
             <form id="signIn-form">
                 <input type="text" name="email" placeholder="Email" required> 
-                <input type="password" name="matkhau" placeholder="Mật khẩu" required>
+                <input type="password" name="pass" placeholder="Mật khẩu" required>
+                <input type="hidden" name="signIn-btn" value="submit">
                 <button type="submit" name="signIn-btn">ĐĂNG NHẬP</button>
             </form>
         </div>

@@ -6,9 +6,11 @@ include 'model/user.php';
 include 'model/order.php';
 
 session_start();
+// session_unset();
+// session_destroy();
 // unset($_SESSION['cart']);
-$_SESSION['idTK'] = 40; // test
-
+// $_SESSION['idTK'] = 40; // test
+// $_SESSION['tenTK'] = 'Le Ngoc Thao Mi'; // test
 if(isset($_GET['page'])&&($_GET['page']!=="")){
     switch(trim($_GET['page'])){
         case 'home':
@@ -43,6 +45,22 @@ if(isset($_GET['page'])&&($_GET['page']!=="")){
             require 'controller/cart.php';
             break;
 
+        case 'history':
+            require 'controller/history.php';
+            break;
+
+        case 'ctdonhang':
+            require 'controller/detail_invoice.php';
+            break;
+
+        case 'logout':
+            require 'controller/logout.php';
+            break;
+
+        case 'login':
+            require 'controller/login.php';
+            break;
+            
         default: 
             require "controller/home.php";
             break;

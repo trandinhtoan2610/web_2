@@ -19,7 +19,6 @@
     <!--noi dung tieu de-->
     <tr class="title">
         <th>Mã</th>
-        <th>Avatar</th>
         <th>Người dùng</th>
         <th>Email</th>
         <th>Loại người dùng</th>
@@ -30,7 +29,7 @@
     <?php 
     if($result!=null){
             //chia mang result thanh tung trang
-        $num_per_page = 2; //total records each page
+        $num_per_page = 5; //total records each page
         $curr_page = getPage();
         $start = ($curr_page-1)*$num_per_page; //start divide for this page
         $keys = array_keys($result);
@@ -42,7 +41,6 @@
     ?>
         <tr class="item">
             <td class="user_id"><?=$idTK?></td>
-            <td class="user"><img src="../uploads/uploads_user/<?=$avatar?>" alt="person"></td>
             <td><?=$tenTK?></td>
             <td><?=$email?></td>
         <?php

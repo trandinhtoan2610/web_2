@@ -17,28 +17,14 @@
     if(isset($_POST['add-user-btn'])){
         include '../../lib/connect.php';
         include '../model/user.php';
-        //avata
-        $images = $_FILES['input_file']['name'];
-        $tmp_dir = $_FILES['input_file']['tmp_name'];
-        $imageSize = $_FILES['input_file']['size'];
-    
-        if($imageSize===0){
-            $picProfile="person.png";
-        }
-        else{
-        $upload_dir='../../uploads/uploads_user/';
-        $imgExt=strtolower(pathinfo($images,PATHINFO_EXTENSION));
-        $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'pdf');
-        $picProfile = rand(1000, 1000000).'.'.$imgExt;
-        move_uploaded_file($tmp_dir, $upload_dir.$picProfile);
-        }
         $ten = $_POST['tenTK'];
         $email = $_POST['email'];
         $dienthoai = $_POST['dienthoai'];
         $diachi = $_POST['diachi'];
         $phanquyen = $_POST['phanquyen'];
+        $matkhau = $_POST['matkhau'];
         if(!isUserExist($email, $dienthoai)){
-            addUser($picProfile, $ten, $email, $dienthoai, $diachi, $phanquyen);
+            addUser($ten, $email, $dienthoai, $diachi, $phanquyen, $matkhau);
             echo json_encode(array('success'=>true));
         }
         else echo json_encode(array('success'=>false));
@@ -64,21 +50,6 @@
     if(isset($_POST['edit-user-btn'])){
         include '../../lib/connect.php';
         include '../model/user.php';
-        //avata
-        $images = $_FILES['input_file']['name'];
-        $tmp_dir = $_FILES['input_file']['tmp_name'];
-        $imageSize = $_FILES['input_file']['size'];
-    
-        if($imageSize===0){ //khong thay doi
-            $picProfile=$_POST['curr_img'];
-        }
-        else{
-            $upload_dir='../uploads/uploads_user/';
-            $imgExt=strtolower(pathinfo($images,PATHINFO_EXTENSION));
-            $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'pdf');
-            $picProfile = rand(1000, 1000000).'.'.$imgExt;
-            move_uploaded_file($tmp_dir, $upload_dir.$picProfile);
-        }
     
         $id = $_POST['idTK'];
         $ten = $_POST['tenTK'];
@@ -88,7 +59,7 @@
         $phanquyen = $_POST['phanquyen'];
         $trangthai = $_POST['trangthai']; //hoat dong
         if(!isUserExist_update($id, $email, $dienthoai)){
-            editUser($id,$picProfile,$ten,$email,$dienthoai,$diachi,$phanquyen,$trangthai);
+            editUser($id, $ten,$email,$dienthoai,$diachi,$phanquyen,$trangthai);
             echo json_encode(array('success'=>true));
         }
         else echo json_encode(array('success'=>false));

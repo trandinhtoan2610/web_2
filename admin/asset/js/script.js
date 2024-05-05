@@ -23,7 +23,7 @@ function w3_close() {
 /* side bar */
 
 /* validate form */
-function formValidate(ten, email, dienthoai, diachi) {
+function formValidate(ten, email, dienthoai, diachi, matkhau) {
     let alert = '';
     let phoneRegex = /^0[0-9]{9}$/;
     let emailRegex = /^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}$/;
@@ -61,6 +61,12 @@ function formValidate(ten, email, dienthoai, diachi) {
     //diachi
     if(diachi === ''){
         alert = "Vui lòng nhập số địa chỉ.";
+        return alert;
+    }
+
+    //matkhau
+    if(matkhau === ""){
+        alert = "Vui lòng nhập mật khẩu";
         return alert;
     }
     return alert;
@@ -145,27 +151,26 @@ function filterValidateThongKe(form){
 /* date validate : thongke-filter */
 
 /* signIn validate */
-function formValidate(email, matkhau) {
-    let alert = '';
+function validateSignIn(email, matkhau) {
     let emailRegex = /^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}$/;
 
     //Email
     if(email === '') {
-        alert = "Vui lòng nhập email của bạn.";
-        return alert;
+        alert("Vui lòng nhập email của bạn.");
+        return false;
     }
     else if(!emailRegex.test(email)) {
-        alert = "Email không hợp lệ.";
-        return alert;
+        alert("Email không hợp lệ.");
+        return false;
     }
 
     //Mat khau
     if(matkhau == ""){
-        alert = "Vui lòng nhập mật khẩu của bạn.";
-        return alert;
+        alert("Vui lòng nhập mật khẩu của bạn.");
+        return false;
     }
 
-    return alert;
+    return true;
 }
 /* signIn validate */
 

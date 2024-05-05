@@ -12,12 +12,18 @@
     </div>
     <button type="submit" name="search-thongke-btn" class="show">Thống kê</button>
 </form>
+<?php
+    if(isset($start) && isset($end)){
+?>
+<p style="margin-left: 120px; font-size: 18px; font-weight: 600; color: green">Từ ngày: <?=$startShow?> đến ngày: <?=$endShow?></p>
+<?php
+    }
+?>
 <!--product list-->
 <table>
     <!--noi dung tieu de-->
     <tr class="title">
         <th>Mã</th>
-        <th>Avatar</th>
         <th>Người dùng</th>
         <th>Điện thoại</th>
         <th>Tổng tiền</th>
@@ -31,10 +37,9 @@
     ?>
         <tr class="item">
             <td class="user_id"><?=$idTK?></td>
-            <td class="user"><img src="../uploads/uploads_user/<?=$avatar?>" alt="person"></td>
             <td><?=$tenTK?></td>
             <td><?=$dienthoai?></td>
-            <td><?=$tongtien?></td>
+            <td><?=number_format($tongtien,0,"",".");?>đ</td>
             <td>
                 <a href="?page=detail_thongke&idTK=<?=$idTK?>&start=<?=$start?>&end=<?=$end?>" class="action-button">
                     <i class="fa-solid fa-circle-info"></i>

@@ -67,6 +67,7 @@
     if(isset($_POST['payment-btn'])){
         include '../lib/connect.php';
         include '../model/order.php';
+        include '../model/product.php';
         session_start();
 
         $thanhtoan = $_POST['thanhtoan'];
@@ -78,8 +79,10 @@
         if($thanhtoan == "sau"){
             // insert don hang moi
             $idDH = addOrder($idTK, $tongtien, $ngaytao, $ngaycapnhat, $diachigiao, $thanhtoan)["LAST_INSERT_ID()"];
-            foreach($_SESSION['cart']['items'] as $idSP => $product)
+            foreach($_SESSION['cart']['items'] as $idSP => $product){
                 addOrderDetailByID($idDH, $idSP, $product['soluong']);
+                updateTonKho($idSP, $product['soluong']);
+            }
             unset($_SESSION['cart']);
             echo json_encode(array('success'=>true,'idDH'=>$idDH));
         }
@@ -97,8 +100,10 @@
         $ngaytao = date('Y-m-d');
         $ngaycapnhat = date('Y-m-d');
         $idDH = addOrder($idTK, $tongtien, $ngaytao, $ngaycapnhat, $_SESSION['cart']['diachigiao'], "trc")["LAST_INSERT_ID()"];
-        foreach($_SESSION['cart']['items'] as $idSP => $product)
+        foreach($_SESSION['cart']['items'] as $idSP => $product){
             addOrderDetailByID($idDH, $idSP, $product['soluong']);
+            updateTonKho($idSP, $product['soluong']);
+        }
         unset($_SESSION['cart']);
         header('location: ?page=hoadon&idDH='.$idDH);
     }

@@ -18,7 +18,7 @@ $(document).ready(function() {
                 console.log(response);
                 const obj = JSON.parse(response);
                 if(obj.success) window.location.href="?page=giohang";
-                else window.location.href="?page=signIn";
+                else window.location.href="?page=login";
             },
         });
     });

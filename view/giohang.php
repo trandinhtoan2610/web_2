@@ -15,9 +15,9 @@
     ?>
     <main>
         <aside>
-            <a><i class="fa-regular fa-circle-user"></i>Nhom2</a>
-            <a  href="#" class="link"><i class='bx bxs-receipt' ></i>Đơn mua</a>
-            <a class="active"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng</a>
+            <a><?=$_SESSION['tenTK']?></a>
+            <a href="?page=history"><i class='bx bxs-receipt'></i>Đơn mua</a>
+            <a class="active" href="?page=giohang"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng</a>
         </aside>
     <section>
         <?php

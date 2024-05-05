@@ -10,7 +10,8 @@ $(document).ready(function() {
         var email = $('#add-form-user input[name="email"]').val();
         var dienthoai = $('#add-form-user input[name="dienthoai"]').val();
         var diachi = $('#add-form-user input[name="diachi"]').val();
-        var note = formValidate(ten, email, dienthoai, diachi);
+        var matkhau = $('#add-form-user input[name="matkhau"]').val();
+        var note = formValidate(ten, email, dienthoai, diachi, matkhau);
         if(note ===''){
             // Serialize form data
             var formData = new FormData( $('#add-form-user')[0]);
@@ -25,7 +26,7 @@ $(document).ready(function() {
                     console.log(response);
                     const obj = JSON.parse(response);
                     if(obj.success) alert('Thêm thành công');
-                    else alert('Người này đã tồn tại do trùng email hoặc số điện thoại');
+                    else alert('Người này đã tồn tại do trùng email');
                 },
             });
         }

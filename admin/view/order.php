@@ -35,7 +35,7 @@
     <?php 
     if($result!=null){
         //chia mang result thanh tung trang
-        $num_per_page = 2; //total records each page
+        $num_per_page = 5; //total records each page
         $curr_page = getPage();
         $start = ($curr_page-1)*$num_per_page; //start divide for this page
         $keys = array_keys($result);
@@ -56,7 +56,6 @@
                 if($trangthai=="cho") echo '<td><span class="status yellow">Chờ duyệt</span></td>';
                 if($trangthai=="vc") echo '<td><span class="status blue">Đang vận chuyển</span></td>';
                 if($trangthai=="ht") echo '<td><span class="status green">Hoàn tất</span></td>';
-                if($trangthai=="huykh") echo '<td><span class="status red">Hủy bởi khách hàng</span></td>';
                 if($trangthai=="huynv") echo '<td><span class="status orange">Hủy bởi nhân viên</span></td>';
             ?>
             <td>
@@ -65,7 +64,7 @@
                     <div class="action-tooltip">Chi tiết</div>
                 </a>
                 <?php
-                    if($trangthai == "cho" || $trangthai == "vc"){
+                    if($trangthai != "huynv"){
                 ?>
                 <a href="?page=edit_order&idDH=<?=$idDH?>" class="action-button">
                     <i class="fas fa-edit"></i>

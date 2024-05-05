@@ -1,4 +1,10 @@
 <?php
+    function getAllInvoice($idUser){
+        $sql = 'SELECT idDH, tongtien, DATE_FORMAT(ngaytao, "%d-%m-%Y") AS ngaytao, trangthai
+        FROM donhang WHERE idTK = "' . $idUser .'"';
+        return getAll($sql);
+    }
+    
     function addOrder($idTK, $tongtien, $ngaytao, $ngaycapnhat, $diachigiao, $thanhtoan){
         $sql = 
         'INSERT INTO donhang (idTK, tongtien, ngaytao, ngaycapnhat, trangthai, diachigiao, thanhtoan)

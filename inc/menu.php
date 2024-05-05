@@ -17,21 +17,40 @@
                 <a href="?page=advSrch">Tìm kiếm nâng cao</a>
             </li>
             <li>
-                <a href="?page=giohang">
+                <?php
+                    if(isset($_SESSION['tenTK'])) echo '<a href="?page=giohang">';
+                    else echo '<a href="?page=login">';
+                ?>
                 <i class="fa-solid fa-cart-shopping"></i>
                 Giỏ hàng 
                 </a>
             </li>
             <li>
-                <a onclick="remind()">
+                <?php
+                    if(isset($_SESSION['tenTK'])) echo '<a href="?page=history">';
+                    else echo '<a href="?page=login">';
+                ?>
                 <i class="fa-solid fa-clock-rotate-left"></i>
                 Lịch sử mua hàng
                 </a>
             </li>
             <li>
-                <a href="reglog.html">
-                <i class="fa-solid fa-circle-user"></i>Đăng nhập
-                </a>
+                <?php
+                    if(!isset($_SESSION['tenTK'])){
+                ?>
+                    <a href="?page=login">
+                    <i class="fa-solid fa-circle-user"></i>Đăng nhập
+                    </a>
+                <?php
+                }
+                else{
+                ?>
+                    <a href="?page=logout">
+                    <?=$_SESSION['tenTK']?> <span style="margin-left: 10px;">Đăng xuất</span>
+                    </a>
+                <?php
+                }
+                ?>
             </li>
         </ul>
     </nav>

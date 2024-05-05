@@ -354,6 +354,15 @@ table .total{
 }
 /* hoadon */
 
+/* order-history */
+.order-detail button{
+	background-color: lightblue;
+	border: none;
+	border-radius: 3px;
+	font-size: 18px;
+	cursor: pointer;
+	padding: 3px;
+}
 
 /*footer*/
 footer{

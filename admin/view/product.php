@@ -27,7 +27,7 @@
     <?php 
     if($result!=null){
             //chia mang result thanh tung trang
-        $num_per_page = 2; //total records each page
+        $num_per_page = 5; //total records each page
         $curr_page = getPage();
         $start = ($curr_page-1)*$num_per_page; //start divide for this page
         $keys = array_keys($result);

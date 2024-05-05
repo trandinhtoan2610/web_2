@@ -7,9 +7,8 @@
     <title>Tìm kiếm nâng cao</title>
     <link rel="stylesheet" href="asset/css/style_AdvSrch.css">
     <script src="asset/js/advSrch.js"></script>
-    <script src="asset/js/test.js"></script>
 </head>
 <body>
-    <header>
-        <img src="asset/img/logo.png" alt="thegioididong">
-    </header>
+<?php
+    include 'menu.php';
+?>

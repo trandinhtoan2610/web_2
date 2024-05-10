@@ -9,10 +9,10 @@
         <meta name="author" content="">
         <title>VNPAY RESPONSE</title>
         <!-- Bootstrap core CSS -->
-        <link href="/vnpay_php/assets/bootstrap.min.css" rel="stylesheet"/>
+        <link href="assets/bootstrap.min.css" rel="stylesheet"/>
         <!-- Custom styles for this template -->
-        <link href="/vnpay_php/assets/jumbotron-narrow.css" rel="stylesheet">         
-        <script src="/vnpay_php/assets/jquery-1.11.3.min.js"></script>
+        <link href="assets/jumbotron-narrow.css" rel="stylesheet">         
+        <script src="assets/jquery-1.11.3.min.js"></script>
     </head>
     <body>
         <?php
@@ -94,6 +94,20 @@
                     </label>
                 </div> 
             </div>
+            <?php
+            if ($secureHash == $vnp_SecureHash) {
+                if ($_GET['vnp_ResponseCode'] == '00') {
+                    echo '<a href="../index.php?page=thanhtoanonline" style="font-size: 20px; background-color: lightgreen; padding: 5px; display: block; margin: 10px auto; width: 200px; text-align: center;">Quay về</a>
+                    ';
+                } else {
+                    echo '<a href="../index.php?page=giohang" style="font-size: 20px; background-color: lightgreen; padding: 5px; display: block; margin: 10px auto; width: 200px; text-align: center;">Quay về</a>
+                    ';
+                }
+            } else {
+                echo '<a href="../index.php?page=giohang" style="font-size: 20px; background-color: lightgreen; padding: 5px; display: block; margin: 10px auto; width: 200px; text-align: center;">Quay về</a>
+                ';
+            }
+            ?>
             <p>
                 &nbsp;
             </p>

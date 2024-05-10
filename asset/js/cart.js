@@ -46,7 +46,7 @@ $(document).ready(function() {
                     const obj = JSON.parse(response);
                     if(obj.success){
                         $('.pay .total').text(obj.tongtien);
-                        $('.pay input[name="tongtien"]').val(obj.tongtien);
+                        $('.pay input[name="tongtien"]').val(obj.updatepay);
                     }
                 },
             });
@@ -55,12 +55,15 @@ $(document).ready(function() {
 
     // tang
     $('.plus').click(function(){
+        console.log("hello");
         var product = $(this).closest('.product');
         var idSP = product.find('input[name="idSP"]').val();
         var qty = product.find('input[name="qty"]');
-        var tmp = qty.val();
-        if(tmp < qty.attr('max')){
+        var tmp = parseInt(qty.val());
+        if(tmp < parseInt(qty.attr('max'))){
+            console.log(tmp);
             tmp++;
+            console.log(tmp);
             qty.val(tmp); 
             $.ajax({
                 url: 'controller/cart.php', // Replace with the actual PHP endpoint to fetch category details
@@ -76,7 +79,7 @@ $(document).ready(function() {
                     const obj = JSON.parse(response);
                     if(obj.success){
                         $('.pay .total').text(obj.tongtien);
-                        $('.pay input[name="tongtien"]').val(obj.tongtien);
+                        $('.pay input[name="tongtien"]').val(obj.updatepay);
                     }
                 },
             });
@@ -100,7 +103,7 @@ $(document).ready(function() {
                 const obj = JSON.parse(response);
                 if(obj.success){
                     $('.pay .total').text(obj.tongtien);
-                    $('.pay input[name="tongtien"]').val(obj.tongtien);
+                    $('.pay input[name="tongtien"]').val(obj.updatepay);
                 }
             },
         });
@@ -112,7 +115,8 @@ $(document).ready(function() {
         console.log('hello');
         // neu gio hang rong thi hien thong bao
         var tongtien = $('#order-form input[name="tongtien"]').val();
-        if(tongtien != "0đ"){
+        console.log(tongtien);
+        if(tongtien != 0){
             var diachigiao = $('#order-form input[name="diachigiao"]').val();
             var thanhtoan = $('#order-form input[name="thanhtoan"]:checked').val();
             console.log(thanhtoan);

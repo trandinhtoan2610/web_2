@@ -4,7 +4,7 @@
     <main>
         <section>
             <h2>Tìm kiếm nâng cao</h2>
-            <form action="?page=search" method="post">
+            <form action="?page=search" method="post" onsubmit="return formSrchValidate(this)">
                     <div>
                         <label for="name">Tên sản phẩm</label>
                         <input type="text" name="tenSP">
@@ -25,9 +25,9 @@
                     </div>
                     <div>
                         <label for="priceFrom">Giá từ</label>
-                        <input type="number" name="priceFrom">
+                        <input type="number" name="priceFrom" min="0">
                         <label for="priceFrom">đến khoảng</label>
-                        <input type="number" name="priceTo">
+                        <input type="number" name="priceTo" min="0">
                     </div>
                 <button type="submit" name="filter-btn" >Tìm kiếm</button>
             </form>

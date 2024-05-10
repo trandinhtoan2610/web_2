@@ -15,7 +15,7 @@
             }
             $idSP = $_POST['idSP'];
             $giaban = $_POST['giaban'];
-            $tonkho = getTonKhoByID($idSP);
+            $tonkho = getTonKhoByID($idSP)['tonkho'];
             if (array_key_exists($idSP, $_SESSION['cart']['items'])) {
                 // Nếu có, cập nhật số lượng
                 $_SESSION['cart']['items'][$idSP]['soluong'] ++;
@@ -59,6 +59,7 @@
         echo json_encode(array(
             'success'=>true, 
             'empty'=>$empty,
+            'updatepay'=> $_SESSION['cart']['tongtien'],
             'tongtien' => number_format($_SESSION['cart']['tongtien'],0,"",".").'đ',
         ));
     }
@@ -80,8 +81,8 @@
             // insert don hang moi
             $idDH = addOrder($idTK, $tongtien, $ngaytao, $ngaycapnhat, $diachigiao, $thanhtoan)["LAST_INSERT_ID()"];
             foreach($_SESSION['cart']['items'] as $idSP => $product){
-                addOrderDetailByID($idDH, $idSP, $product['soluong']);
-                updateTonKho($idSP, $product['soluong']);
+                addOrderDetailByID($idDH, $idSP, $product['soluong'], $product['giaban']);
+                updateTonKhoLuotBan($idSP, $product['soluong']);
             }
             unset($_SESSION['cart']);
             echo json_encode(array('success'=>true,'idDH'=>$idDH));
@@ -101,8 +102,8 @@
         $ngaycapnhat = date('Y-m-d');
         $idDH = addOrder($idTK, $tongtien, $ngaytao, $ngaycapnhat, $_SESSION['cart']['diachigiao'], "trc")["LAST_INSERT_ID()"];
         foreach($_SESSION['cart']['items'] as $idSP => $product){
-            addOrderDetailByID($idDH, $idSP, $product['soluong']);
-            updateTonKho($idSP, $product['soluong']);
+            addOrderDetailByID($idDH, $idSP, $product['soluong'], $product['giaban']);
+            updateTonKhoLuotBan($idSP, $product['soluong']);
         }
         unset($_SESSION['cart']);
         header('location: ?page=hoadon&idDH='.$idDH);

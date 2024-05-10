@@ -7,3 +7,9 @@ Huỳnh Diệu Hưng - 3120410220
 Lê Nguyễn Hoàng Phát - 3122560054   
 
 Lê Ngọc Thảo Vy - 3122560091
+
+Ngân hàng: NCB
+Số thẻ: 9704198526191432198
+Tên chủ thẻ:NGUYEN VAN A
+Ngày phát hành:07/15
+Mật khẩu OTP:123456

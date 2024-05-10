@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--đổi title khi nhấn registerLink-->
     <title class="title">Đăng nhập</title>
-    <link rel="stylesheet" href="./css/style_Reglog.css">
+    <link rel="stylesheet" href="asset/css/style_Reglog.css">
 </head>
 <body>
-    <img src="./img/thegioididong.png" alt="thegioididong">
+    <a href="index.php"><img src="asset/img/logo.png" alt="thegioididong"></a>
     <div class="wrapper" style="height: 650px;">
         <div class=" form-box login">
             <h1>Đăng nhập</h1>

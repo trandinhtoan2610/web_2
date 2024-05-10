@@ -13,7 +13,7 @@ $(document).ready(function() {
         var card = $('#add-form-product input[name="card"]').val();
         var pin = $('#add-form-product input[name="pin"]').val();
         var ram = $('#add-form-product input[name="ram"]').val();
-        var mota = $('#add-form-product input[name="mota"]').val();
+        var mota = $('#add-form-product textarea[name="mota"]').val();
         var note = formValidateProduct(tenSP, giaban, tonkho, cpu, card, pin, ram, mota);
         if(note ===''){
             // Serialize form data
@@ -46,7 +46,7 @@ $(document).ready(function() {
         var card = $('#edit-form-product input[name="card"]').val();
         var pin = $('#edit-form-product input[name="pin"]').val();
         var ram = $('#edit-form-product input[name="ram"]').val();
-        var mota = $('#edit-form-product input[name="mota"]').val();
+        var mota = $('#edit-form-product textarea[name="mota"]').val();
         var note = formValidateProduct(tenSP, giaban, tonkho, cpu, card, pin, ram, mota);
         if(note ===''){
             console.log("hello");

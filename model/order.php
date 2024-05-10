@@ -14,10 +14,10 @@
         return getOne($sql);
     }
 
-    function addOrderDetailByID($idDH, $idSP, $soluong){
+    function addOrderDetailByID($idDH, $idSP, $soluong, $giaban){
         $sql = 
-        'INSERT INTO ctdonhang (idDH, idSP, soluong)
-        VALUES ('.$idDH.', '.$idSP.', '.$soluong.')';
+        'INSERT INTO ctdonhang (idDH, idSP, soluong, gialucdat)
+        VALUES ('.$idDH.', '.$idSP.', '.$soluong.','.$giaban.')';
         insert($sql);
     }
 

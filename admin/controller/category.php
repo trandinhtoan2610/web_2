@@ -61,7 +61,7 @@
             $picProfile=$_POST['curr_img'];
         }
         else{
-        $upload_dir='../uploads/uploads_category/';
+        $upload_dir='../../uploads/uploads_category/';
         $imgExt=strtolower(pathinfo($images,PATHINFO_EXTENSION));
         $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'pdf');
         $picProfile = rand(1000, 1000000).'.'.$imgExt;

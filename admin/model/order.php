@@ -16,7 +16,7 @@
 
     function getOrderDetailByID($id){
         $sql = 
-        'SELECT tenSP, giaban, soluong, hinhanh, sanpham.idSP
+        'SELECT tenSP, gialucdat AS giaban, soluong, hinhanh, sanpham.idSP
         FROM donhang INNER JOIN ctdonhang ON donhang.idDH = ctdonhang.idDH
         INNER JOIN sanpham ON ctdonhang.idSP = sanpham.idSP
         WHERE donhang.idDH='.$id;
@@ -51,6 +51,7 @@
         'SELECT idTK, idDH, DATE_FORMAT(ngaytao, "%d-%m-%Y") AS ngaytao, DATE_FORMAT(ngaycapnhat, "%d-%m-%Y") AS ngaycapnhat, tongtien
         FROM donhang
         WHERE 1';
+        $sql.=' AND trangthai = "ht"';
         if(($start == '' && $end!='') || ($start != '' && $end=='')){
             if($start == '') $sql.=' AND ngaycapnhat <= "'.$end.'"';
             if($end == '') $sql.=' AND ngaycapnhat >= "'.$start.'"';

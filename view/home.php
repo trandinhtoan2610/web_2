@@ -26,8 +26,8 @@
         <?php 
             //chia mang result thanh tung trang
             //moi dong 5 sp, moi trang 10 sp
-            $num_per_page = 8; //total records each page
-            $num_per_row = 4;
+            $num_per_page = 10; //total records each page
+            $num_per_row = 5;
             $rows = $num_per_page/$num_per_row; //so dong moi trang
             $curr_page = getPage();
             $start = ($curr_page-1)*$num_per_page; //start divide for this page

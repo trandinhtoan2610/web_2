@@ -41,10 +41,11 @@
         return getOne($sql);
     }
 
-    function updateTonKho($idSP, $soluong){
+    function updateTonKhoLuotBan($idSP, $soluong){
         $sql = 
         'UPDATE sanpham
-        SET tonkho = tonkho - '.$soluong.'
+        SET tonkho = tonkho - '.$soluong.',
+        luotban = luotban + '.$soluong.'
         WHERE idSP = '.$idSP;
         insert($sql);
     }
